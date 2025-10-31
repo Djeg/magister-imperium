@@ -1,11 +1,11 @@
 import { config } from '@tamagui/config/v3'
 import { createTamagui } from 'tamagui'
 
-const tamaguiConfig = createTamagui(config)
+export function createTamaguiConfig() {
+  return createTamagui(config)
+}
 
-export default tamaguiConfig
-
-export type TamaguiConfig = typeof tamaguiConfig
+export type TamaguiConfig = ReturnType<typeof createTamaguiConfig>
 
 declare module 'tamagui' {
   interface TamaguiCustomConfig extends TamaguiConfig {}

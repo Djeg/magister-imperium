@@ -15,3 +15,11 @@ alwaysApply: true
 - Don't use `myArray[index]` use `myArray.at(index)` when possible
 - It's ok to export many things inside a file as long as it keeps the coherence
 - Always use alias `@/some-path` to import local files (easy refactoring)
+- Don't use global constant ! Use a function instead (or use `once` if you have
+  no choice). That way we ensure a correct usage of the app during a possible
+  runtime on a server!
+- Don't use return types unless it's nescessary, let typescript infer the return
+  type
+- Use `once` function **only when no other choices is possible!!!!!!** or for
+  **critical data that needs to be everywhere (like envs)** (such as
+  holding values inside contexts for example)
