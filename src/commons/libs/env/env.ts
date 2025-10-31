@@ -1,14 +1,9 @@
 import { once } from '@/commons/libs/fns/once'
-import { z } from 'zod'
-
-export const envSchema = z.object({
-  supabaseUrl: z.url(),
-  supabaseAnonKey: z.string(),
-})
-
-export type Env = z.infer<typeof envSchema>
-
-export type EnvKeys = keyof Env
+import {
+  type Env,
+  type EnvKeys,
+  envSchema,
+} from '@/commons/schemas/env-schema/env-schema'
 
 export function env<T extends EnvKeys>(key: T): Env[T] {
   const env = parseEnv()
@@ -26,7 +21,7 @@ export function env<T extends EnvKeys>(key: T): Env[T] {
   return value
 }
 
-export const parseEnv = once((): Env => {
+const parseEnv = once((): Env => {
   const {
     success,
     data: env,
