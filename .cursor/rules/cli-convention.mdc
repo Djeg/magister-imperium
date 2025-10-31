@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+## Bun
+
+- Use `bun` instead of `node` or `npm` / `yarn` / `pnpm`
+
+## Testing
+
+- Use `bun test:all` or `bun test:watch` to run the test suit

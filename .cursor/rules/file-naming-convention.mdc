@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+
+# File Naming Convention
+
+- Use `dashed-case-convention` to name files and folder
+- Use `*.test.ts(x)` to name tests files
+- Use `*.stories.ts(x)` to name stories from storybook

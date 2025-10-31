@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+
+# Use environment
+
+- Edit the `.env.dist` that serve has an example (don't put sensitive data in there!!!!!!)
+- Then edit the `.env` file to put the real value
+- Then inside the `env.ts` file add an entre in the schema
+- Use the `env` function instead of `process.env...`

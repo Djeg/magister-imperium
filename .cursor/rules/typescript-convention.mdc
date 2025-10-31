@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+
+# Typescript Conventions
+
+- Use `biome` to format code
+- Use `types` over `interface` (unless interface is required such for declaration
+  merging for example)
+- Use `function myFunction() { ... }` over `const myFunction = () => { ... }` when
+  a function is in top level on the file
+- Use arrow function when a function lives inside an other function
+- Don't use `class` unless you have no choice
+- Suffix react props `types` with `export type NameOfTheComponentProps = { ... }`
+- Don't use `myArray[index]` use `myArray.at(index)` when possible
+- It's ok to export many things inside a file as long as it keeps the coherence
+- Always use alias `@/some-path` to import local files (easy refactoring)

@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+# React Conventions
+
+- Name files like components (ex: `SuperNavBar` -> `super-nav-bar.tsx`)
+- Don't use `export default` use `export` (\*\*except when inside the `src/app` folder
+  of expo)
+- If exports many components use coumpound components pattern (ex: `MyNavBar.Header`)
+- use tamagui

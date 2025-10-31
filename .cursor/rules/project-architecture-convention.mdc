@@ -1,0 +1,71 @@
+---
+alwaysApply: true
+---
+
+# Architecture Convention
+
+## The `src` folder
+
+- Use the `src` folder to put all js/ts/json files
+
+## The `src/app` folder
+
+- Put all expo router files in there
+
+## The **domain specific folders**
+
+- All other folders present in the `src` represent a specific application
+  domain.
+- Follow the app domain folder convention bellow
+
+## The **domain convention folder structure**
+
+A domain folder must contains only:
+
+- `components/`: Contains all react components (even providers etc ...)
+- `hooks/`: Contains all react hooks
+- `libs/`: Contains specific libraries, configurations that lives outside react
+  ecosystem
+- `schemas/`: Contains zod schemas
+- It's ok to have a huge folder contents as long as naming is explicit
+- Avoid creating sub folders
+
+## The `src/commons` folder
+
+- Use when parts of code are shared between domains
+- Must follow the [domain specific folder structure](#the-domain-specific-folders)
+
+## Module
+
+- Wrap any file inside their own folder (ex: a fetch-users.ts libs must be inside `lib/fetch-users/fetch-users.ts` file. An exception is made to keep
+  only one level of complexity ex `lib/config/some-config-file.ts` is ok to avoid nesting contents)
+- Put test files at the same level
+- Put `.any-extention.ts(x)` when a files contains specialized code such as configuration
+  or other
+- Use explicit naming
+
+## Exemple
+
+```
+src/
+  some-domain/
+    components/
+      some-nav-bar/
+        some-nav-bar.tsx
+        some-nav-bar.test.tsx
+        some-nav-bar.stories.tsx
+    schemas/
+      some-user-schema/
+        some-user-schema.tsx
+    hooks/
+      use-some-state/
+        use-some-state.tsx
+        use-some-state.test.tsx
+    libs/
+      some-lib/
+        some-lib.config.tsx
+        some-lib.tsx
+        some-lib.test.tsx
+      fetch-some-data/
+        fetch-some-data.tsx
+```
