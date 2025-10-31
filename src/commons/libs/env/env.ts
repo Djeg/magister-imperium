@@ -29,6 +29,7 @@ const parseEnv = once((): Env => {
   } = envSchema.safeParse({
     supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
     supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_KEY,
+    locale: process.env.EXPO_PUBLIC_DEFAULT_LOCALE,
   })
 
   if (!success) {
