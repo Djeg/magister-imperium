@@ -11,8 +11,7 @@
     "lint": "expo lint && biome lint",
     "test:all": "bun --env-file .env jest --verbose --all",
     "test:watch": "bun --env-file .env jest --verbose --watch",
-    "jest": "jest",
-    "storybook-generate": "sb-rn-get-stories"
+    "jest": "jest"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -49,7 +48,6 @@
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.5.1",
     "tamagui": "^1.135.7",
-    "type-fest": "^5.1.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -72,6 +70,7 @@
     "jest-expo": "^54.0.13",
     "react-native-svg": "^15.14.0",
     "storybook": "^10.0.2",
+    "type-fest": "^5.1.0",
     "typescript": "~5.9.2"
   },
   "private": true,
