@@ -5,11 +5,11 @@ import {
   envSchema,
 } from '@/commons/schemas/env-schema/env-schema'
 
-export function env<T extends EnvKeys>(key: T): Env[T] {
+export function env<T extends EnvKeys>(key: T): NonNullable<Env[T]> {
   const env = parseEnv()
   const value = env[key]
 
-  if (!value) {
+  if (undefined === value) {
     throw new Error(`
       The environment variable "${key}" is not set!
 
@@ -30,6 +30,7 @@ const parseEnv = once((): Env => {
     supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
     supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_KEY,
     locale: process.env.EXPO_PUBLIC_DEFAULT_LOCALE,
+    storybookEnabled: process.env.EXPO_PUBLIC_STORYBOOK_ENABLED,
   })
 
   if (!success) {

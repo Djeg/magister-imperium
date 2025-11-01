@@ -15,7 +15,7 @@ export default function RootLayout() {
             <SupabaseProvider>
               <TranslationsProvider>
                 <SplashScreenSuspense.Ending>
-                  <Stack />
+                  <Stack screenOptions={{ headerShown: false }} />
                 </SplashScreenSuspense.Ending>
               </TranslationsProvider>
             </SupabaseProvider>
