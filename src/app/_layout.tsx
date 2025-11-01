@@ -1,3 +1,4 @@
+import { FontProvider } from '@/commons/components/font-provider/font-provider'
 import { GlobalErrorBoundary } from '@/commons/components/global-error-boundary/global-error-boundary'
 import { SplashScreenSuspense } from '@/commons/components/splash-screen-suspense/splash-screen-suspense'
 import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
@@ -8,20 +9,22 @@ import { Stack } from 'expo-router'
 
 export default function RootLayout() {
   return (
-    <TamaguiProvider>
-      <SplashScreenSuspense>
-        <TanstackQueryProvider>
-          <GlobalErrorBoundary>
-            <SupabaseProvider>
-              <TranslationsProvider>
-                <SplashScreenSuspense.Ending>
-                  <Stack screenOptions={{ headerShown: false }} />
-                </SplashScreenSuspense.Ending>
-              </TranslationsProvider>
-            </SupabaseProvider>
-          </GlobalErrorBoundary>
-        </TanstackQueryProvider>
-      </SplashScreenSuspense>
-    </TamaguiProvider>
+    <FontProvider>
+      <TamaguiProvider>
+        <SplashScreenSuspense>
+          <TanstackQueryProvider>
+            <GlobalErrorBoundary>
+              <SupabaseProvider>
+                <TranslationsProvider>
+                  <SplashScreenSuspense.Ending>
+                    <Stack screenOptions={{ headerShown: false }} />
+                  </SplashScreenSuspense.Ending>
+                </TranslationsProvider>
+              </SupabaseProvider>
+            </GlobalErrorBoundary>
+          </TanstackQueryProvider>
+        </SplashScreenSuspense>
+      </TamaguiProvider>
+    </FontProvider>
   )
 }
