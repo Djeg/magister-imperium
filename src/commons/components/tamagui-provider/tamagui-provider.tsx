@@ -1,6 +1,6 @@
 import {
-  createTamaguiConfig,
   type TamaguiConfig,
+  tamaguiConfig,
 } from '@/commons/libs/tamagui/tamagui.config'
 import type { ReactNode } from 'react'
 import { TamaguiProvider as BaseTamaguiProvider } from 'tamagui'
@@ -12,7 +12,7 @@ export type TamaguiProviderProps = {
 
 export function TamaguiProvider({
   children,
-  config = createTamaguiConfig(),
+  config = tamaguiConfig,
 }: TamaguiProviderProps) {
   return <BaseTamaguiProvider config={config}>{children}</BaseTamaguiProvider>
 }

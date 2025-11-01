@@ -2,15 +2,13 @@ import { SplashScreen } from 'expo-router'
 import { type ReactNode, Suspense, useEffect } from 'react'
 import { Text } from 'tamagui'
 
+SplashScreen.preventAutoHideAsync()
+
 export type SplashScreenSuspenseProps = {
   children: ReactNode
 }
 
 export function SplashScreenSuspense({ children }: SplashScreenSuspenseProps) {
-  useEffect(() => {
-    SplashScreen.preventAutoHideAsync()
-  }, [])
-
   return <Suspense fallback={<Text>Loading...</Text>}>{children}</Suspense>
 }
 

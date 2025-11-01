@@ -1,12 +1,24 @@
 import { configureI18next } from '@/commons/libs/translations/translations'
-import { type ReactNode, use } from 'react'
+import type { ReactNode } from 'react'
 
 export type TranslationsProviderProps = {
   children: ReactNode
 }
 
 export function TranslationsProvider({ children }: TranslationsProviderProps) {
-  use(configureI18next())
+  useConfigureI18next()
 
   return children
+}
+
+let i18nCache: Awaited<ReturnType<typeof configureI18next>> | null = null
+
+function useConfigureI18next() {
+  if (i18nCache) return i18nCache
+
+  const promise = configureI18next().then(i18n => {
+    i18nCache = i18n
+  })
+
+  throw promise
 }

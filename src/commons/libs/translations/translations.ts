@@ -1,7 +1,7 @@
 import { env } from '@/commons/libs/env/env'
 import { messagesEn } from '@/commons/libs/translations/messages.en'
 import { messagesFr } from '@/commons/libs/translations/messages.fr'
-import { init, t } from 'i18next'
+import { t as baseT, init } from 'i18next'
 import type { Paths } from 'type-fest'
 
 export type TranslationKey = Paths<
@@ -12,7 +12,7 @@ export type TranslationKey = Paths<
 >
 
 export function translate<T extends TranslationKey>(key: T) {
-  return t(key)
+  return baseT(key)
 }
 
 export function configureI18next() {
@@ -29,3 +29,5 @@ export function configureI18next() {
     },
   })
 }
+
+export const t = translate
