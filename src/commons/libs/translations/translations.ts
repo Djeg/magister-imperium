@@ -1,8 +1,7 @@
 import { env } from '@/commons/libs/env/env'
-import { messagesEn } from '@/commons/libs/translations/messages.en'
-import { messagesFr } from '@/commons/libs/translations/messages.fr'
 import { t as baseT, init } from 'i18next'
 import type { Paths } from 'type-fest'
+import { messagesEn, messagesFr } from './messages'
 
 export type TranslationKey = Paths<
   typeof messagesFr & typeof messagesEn,

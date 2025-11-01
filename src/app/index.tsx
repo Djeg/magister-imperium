@@ -1,18 +1,8 @@
 import { env } from '@/commons/libs/env/env'
-import { Text, View } from 'react-native'
+import { MagisterCallingPage } from '@/recruitment/components/magister-calling-page/magister-calling-page'
 
 function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  )
+  return <MagisterCallingPage />
 }
 
 function Storybook() {

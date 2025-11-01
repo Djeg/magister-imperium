@@ -1,5 +1,6 @@
 import { defaultConfig } from '@tamagui/config/v4'
 import { createFont, createTamagui } from 'tamagui'
+import { colors } from './tamagui.colors'
 
 export const pixelifySansFont = createFont({
   family: 'PixelifySans_400Regular',
@@ -34,10 +35,27 @@ export const pixelifySansFont = createFont({
 
 export const tamaguiConfig = createTamagui({
   ...defaultConfig,
+  tokens: {
+    ...defaultConfig.tokens,
+    color: colors.color,
+  },
   fonts: {
     ...defaultConfig.fonts,
     body: pixelifySansFont,
     heading: pixelifySansFont,
+  },
+  themes: {
+    ...defaultConfig.themes,
+    light_Button: {
+      background: colors.color.goldExtraLight,
+      backgroundHover: colors.color.goldLight,
+      backgroundPress: colors.color.goldLight,
+      backgroundFocus: colors.color.goldLight,
+      borderColor: colors.color.goldExtraDark,
+      borderColorHover: colors.color.goldDark,
+      borderColorPress: colors.color.goldDark,
+      borderColorFocus: colors.color.goldDark,
+    },
   },
 })
 
