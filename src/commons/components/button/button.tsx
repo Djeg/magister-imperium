@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react'
-import { styled, Button as TamaguiButton } from 'tamagui'
+import { styled, Button as TamaguiButton, XStack } from 'tamagui'
 import type { Except } from 'type-fest'
 import {
   DecoratedFrame,
@@ -29,6 +29,12 @@ export function Button({
       <DecoratedButton decoratedSize={size} {...props} />
     </DecoratedFrame>
   )
+}
+
+export type ButtonGroupProps = ComponentProps<typeof XStack>
+
+function Group(props: ButtonGroupProps) {
+  return <XStack gap="$2" items="center" {...props}></XStack>
 }
 
 const DecoratedButton = styled(TamaguiButton, {
@@ -61,3 +67,5 @@ const DecoratedButton = styled(TamaguiButton, {
     } as const,
   },
 })
+
+Button.Group = Group

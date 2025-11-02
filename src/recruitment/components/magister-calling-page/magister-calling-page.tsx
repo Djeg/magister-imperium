@@ -3,9 +3,14 @@ import { Button } from '@/commons/components/button/button'
 import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-frame'
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import { t } from '@/commons/libs/translations/translations'
+import { router } from 'expo-router'
 import { Heading, Image, styled, Text, View, YStack } from 'tamagui'
 
 export function MagisterCallingPage() {
+  const handleSign = () => {
+    router.push('/magister-creation')
+  }
+
   return (
     <PageFrame>
       <BackgroundCoverImage
@@ -50,7 +55,7 @@ export function MagisterCallingPage() {
           </DecoratedFrame>
         </View>
         <HButtonStack justify="center" items="center">
-          <Button frameProps={{ flex: 1 }}>
+          <Button frameProps={{ flex: 1 }} onPress={handleSign}>
             {t('recruitment.MagisterCallingPage.btns.sign')}
           </Button>
           <Button frameProps={{ flex: 1 }}>
