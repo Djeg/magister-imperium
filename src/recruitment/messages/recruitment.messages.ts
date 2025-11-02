@@ -3,6 +3,8 @@ export const recruitmentMessagesEn = {
     errors: {
       signUp:
         'An error occurred while signing up. Please retry in a moment, the imperium might be busy.',
+      insertMagister:
+        "We are sorry magister, but it seems that the Imperium can't process your request right now. Please retry in a moment.",
     },
   },
 
@@ -57,6 +59,8 @@ export const recruitmentMessagesFr = {
     errors: {
       signUp:
         "Une erreur est survenue lors de la signature magister. Veuillez réessayer plus tard, l'Impérium peut être occupé.",
+      insertMagister:
+        "Nous sommes désolés Magister, mais il semble que l'Impérium ne puisse pas traiter votre demande pour le moment. Veuillez réessayer plus tard.",
     },
   },
 

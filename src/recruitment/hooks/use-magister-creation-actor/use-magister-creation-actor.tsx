@@ -24,8 +24,25 @@ export function useMagisterCreationActor() {
       },
     )
 
-    if (signUpError) {
+    if (signUpError || !signUpData.user) {
       $.errors.set([t('recruitment.useMagisterCreationState.errors.signUp')])
+
+      return
+    }
+
+    const { data: insertMagisterData, error: insertMagisterError } =
+      await supabase
+        .from('magisters')
+        .insert({
+          name: newMagister.name,
+        })
+        .select('id, name')
+        .single()
+
+    if (insertMagisterError || !insertMagisterData) {
+      $.errors.set([
+        t('recruitment.useMagisterCreationState.errors.insertMagister'),
+      ])
 
       return
     }
