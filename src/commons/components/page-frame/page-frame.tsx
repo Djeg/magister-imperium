@@ -2,11 +2,21 @@ import {
   SafeAreaView,
   type SafeAreaViewProps,
 } from 'react-native-safe-area-context'
-import { styled, View } from 'tamagui'
+import { ScrollView, styled, View } from 'tamagui'
 
-export type PageFrameProps = SafeAreaViewProps
+export type PageFrameProps = SafeAreaViewProps & {
+  scrollable?: boolean
+}
 
-export function PageFrame(props: PageFrameProps) {
+export function PageFrame({ scrollable = false, ...props }: PageFrameProps) {
+  if (scrollable) {
+    return (
+      <ScrollView flex={1} contentContainerStyle={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }} {...props} />
+      </ScrollView>
+    )
+  }
+
   return <SafeAreaView style={{ flex: 1 }} {...props} />
 }
 

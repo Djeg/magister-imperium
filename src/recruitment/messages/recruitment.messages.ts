@@ -16,6 +16,7 @@ export const recruitmentMessagesEn = {
       'The Imperium is calling you to join us. The new world is waiting for you! You can sign by filling out the form below.',
     btns: {
       sign: 'Sign',
+      submitting: 'Submitting ...',
     },
     name: {
       label: 'Name:',
@@ -58,6 +59,7 @@ export const recruitmentMessagesFr = {
       "L'impérium recherche des Magisters pour nous aider à coloniser le nouveau monde ! Vous pouvez signer en remplissant le formulaire ci-dessous.",
     btns: {
       sign: 'Signer',
+      submitting: 'Envoi en cours...',
     },
     name: {
       label: 'Nom :',
