@@ -10,6 +10,7 @@ import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-s
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
 import { Memo } from '@legendapp/state/react'
+import { StatusBar } from 'react-native'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterCreationPageProps = {
@@ -25,6 +26,7 @@ export function MagisterCreationPage({
 
   return (
     <PageFrame edges={['bottom']}>
+      <StatusBar barStyle="dark-content" />
       <Background.CoverImage
         source={require('@/assets/images/magister-creation.jpeg')}
       />

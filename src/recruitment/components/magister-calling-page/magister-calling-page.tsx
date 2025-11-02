@@ -4,6 +4,7 @@ import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-f
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Action } from '@/commons/libs/react/react.action'
 import { t } from '@/commons/libs/translations/translations'
+import { StatusBar } from 'react-native'
 import { Heading, Image, styled, Text, View, YStack } from 'tamagui'
 
 export type MagisterCallingPageProps = {
@@ -17,6 +18,7 @@ export function MagisterCallingPage({
 }: MagisterCallingPageProps) {
   return (
     <PageFrame>
+      <StatusBar barStyle="dark-content" />
       <Background.CoverImage
         source={require('@/assets/images/city-background.jpeg')}
       />

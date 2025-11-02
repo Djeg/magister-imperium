@@ -10,6 +10,7 @@ import type { MagisterCredentials } from '@/recruitment/schemas/magister-credent
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
 import { Memo } from '@legendapp/state/react'
+import { StatusBar } from 'react-native'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterLoginPageProps = {
@@ -26,7 +27,8 @@ export function MagisterLoginPage({
   })
 
   return (
-    <PageFrame>
+    <PageFrame edges={['bottom']}>
+      <StatusBar barStyle="dark-content" />
       <Background.CoverImage
         source={require('@/assets/images/magister-login.jpeg')}
       />
