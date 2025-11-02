@@ -10,14 +10,20 @@ import {
   newMagisterSchema,
 } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
+import { type Observable, observable } from '@legendapp/state'
+import { Memo } from '@legendapp/state/react'
 import { useForm } from '@tanstack/react-form'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterCreationPageProps = {
   onSign: Action<NewMagister>
+  $errors?: Observable<string[]>
 }
 
-export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
+export function MagisterCreationPage({
+  onSign,
+  $errors = observable([]),
+}: MagisterCreationPageProps) {
   const { Field, Subscribe, handleSubmit } = useForm({
     defaultValues: {
       name: '',
@@ -29,7 +35,6 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
       onSubmit: newMagisterSchema,
     },
     onSubmit: ({ value }) => {
-      console.warn(value)
       return onSign(newMagisterSchema.parse(value))
     },
   })
@@ -53,6 +58,19 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
               <Text text="center">
                 {t('recruitment.MagisterCreationPage.description')}
               </Text>
+              <Memo>
+                {() =>
+                  $errors.get().length ? (
+                    <FormField.ErrorList>
+                      {$errors.get().map(error => (
+                        <FormField.ErrorMessage key={error} text="center">
+                          {error}
+                        </FormField.ErrorMessage>
+                      ))}
+                    </FormField.ErrorList>
+                  ) : null
+                }
+              </Memo>
               <Field name="name">
                 {field => (
                   <FormField

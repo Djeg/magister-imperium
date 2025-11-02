@@ -11,7 +11,8 @@
     "lint": "expo lint && biome lint",
     "test:all": "bun --env-file .env jest --verbose --all",
     "test:watch": "bun --env-file .env jest --verbose --watch",
-    "jest": "jest"
+    "jest": "jest",
+    "supabase:gen:types": "bun run .scripts/supabase-gen-types.ts"
   },
   "dependencies": {
     "@expo-google-fonts/pixelify-sans": "^0.4.2",
@@ -62,6 +63,7 @@
     "@storybook/addon-ondevice-controls": "^10.0.0",
     "@storybook/react-native": "^10.0.0",
     "@testing-library/react-native": "^13.3.3",
+    "@types/bun": "^1.3.1",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.1.0",
     "babel-loader": "^8.4.1",

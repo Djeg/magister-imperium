@@ -29,8 +29,6 @@ export function useMagisterCreationActor() {
 
       return
     }
-
-    console.warn(signUpData)
   }
 
   return [$, { createNewMagister }] as const
