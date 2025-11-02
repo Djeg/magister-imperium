@@ -8,6 +8,10 @@ export type QueryMagisterPayload = {
   userId: string
 }
 
+export class QueryMagisterFailure extends failure.named(
+  'commons/queries/query-magister',
+) {}
+
 export async function queryMagister({
   supabase,
   userId,
@@ -19,8 +23,8 @@ export async function queryMagister({
     .single()
 
   if (error) {
-    throw failure(
-      'commons/queries/query-magister',
+    failure(
+      QueryMagisterFailure,
       'Failed to query magister by the given user id',
       {
         cause: error,

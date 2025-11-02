@@ -6,6 +6,10 @@ export type MutationSignUpPayload = {
   newMagister: MagisterCreation
 }
 
+export class MutationSignUpFailure extends failure.named(
+  'recruitment/mutations/mutation-sign-up',
+) {}
+
 export async function mutationSignUp({
   supabase,
   newMagister,
@@ -16,7 +20,7 @@ export async function mutationSignUp({
   })
 
   if (error || !data.user) {
-    throw failure('recruitment/mutations/mutate-sign-up', 'Failed to sign up', {
+    failure(MutationSignUpFailure, 'Failed to sign up a new magister', {
       cause: error,
     })
   }

@@ -9,6 +9,10 @@ export type MutationNewMagisterPayload = {
   newMagister: MagisterCreation
 }
 
+export class MutationNewMagisterFailure extends failure.named(
+  'recruitment/mutations/mutation-new-magister',
+) {}
+
 export async function mutationNewMagister({
   supabase,
   userId,
@@ -24,12 +28,9 @@ export async function mutationNewMagister({
     .single()
 
   if (error || !data) {
-    console.error(error)
-    throw failure(
-      'recruitment/mutations/mutation-new-magister',
-      'Failed to insert the magister',
-      { cause: error },
-    )
+    failure(MutationNewMagisterFailure, 'Failed to insert the magister', {
+      cause: error,
+    })
   }
 
   return magisterSchema.parse({

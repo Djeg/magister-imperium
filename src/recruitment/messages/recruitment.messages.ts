@@ -1,4 +1,11 @@
 export const recruitmentMessagesEn = {
+  useMagisterLoginStore: {
+    errors: {
+      login:
+        'An error occurred while joining your colony. Please retry in a moment, the imperium might be busy.',
+    },
+  },
+
   useMagisterCreationStore: {
     errors: {
       signUp:
@@ -43,8 +50,30 @@ export const recruitmentMessagesEn = {
     },
   },
 
+  MagisterLoginPage: {
+    title: 'My Magister',
+    description:
+      'Join your colony by filling out the form below. Your ship will depart soon.',
+    btns: {
+      login: 'Join your colony',
+      submitting: 'Taking off ...',
+    },
+    email: {
+      label: 'Email:',
+      placeholder: 'Enter your email',
+    },
+    password: {
+      label: 'Password:',
+      placeholder: 'Enter your password',
+    },
+  },
+
   MagisterCreationHeaderNav: {
     title: 'Join us!',
+  },
+
+  MagisterLoginHeaderNav: {
+    title: 'Join your colony',
   },
 
   magisterCreationSchema: {
@@ -53,6 +82,13 @@ export const recruitmentMessagesEn = {
 }
 
 export const recruitmentMessagesFr = {
+  useMagisterLoginStore: {
+    errors: {
+      login:
+        "Une erreur est survenue lors de la réunion avec votre colonie. Veuillez réessayer plus tard, l'Impérium peut être occupé.",
+    },
+  },
+
   useMagisterCreationStore: {
     errors: {
       signUp:
@@ -95,6 +131,28 @@ export const recruitmentMessagesFr = {
       label: 'Confirmer le mot de passe :',
       placeholder: 'Confirmez votre mot de passe',
     },
+  },
+
+  MagisterLoginPage: {
+    title: 'Mon Magister',
+    description:
+      'Rejoignez votre colonie en remplissant le formulaire ci-dessous. Votre vaisseau partira bientôt.',
+    btns: {
+      login: 'Rejoindre votre colonie',
+      submitting: 'Amarrage en cours...',
+    },
+    email: {
+      label: 'Email :',
+      placeholder: 'Entrez votre email',
+    },
+    password: {
+      label: 'Mot de passe :',
+      placeholder: 'Entrez votre mot de passe',
+    },
+  },
+
+  MagisterLoginHeaderNav: {
+    title: 'Rejoignez votre colonie',
   },
 
   MagisterCreationHeaderNav: {

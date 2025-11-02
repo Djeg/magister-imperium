@@ -6,7 +6,9 @@ export function MagisterCallingScreen() {
     router.push('/magister-creation')
   }
 
-  const handleJoin = () => {}
+  const handleJoin = () => {
+    router.push('/magister-login')
+  }
 
   return <MagisterCallingPage onSign={handleSign} onJoin={handleJoin} />
 }
