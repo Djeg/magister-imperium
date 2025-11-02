@@ -110,7 +110,7 @@ export function MagisterLoginPage({
               <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
                 {isSubmitting ? (
                   <Text>
-                    {t('recruitment.MagisterCreationPage.btns.submitting')}
+                    {t('recruitment.MagisterLoginPage.btns.submitting')}
                   </Text>
                 ) : (
                   <Button.Group>
