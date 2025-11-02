@@ -1,10 +1,17 @@
 import type { PropsWithChildren } from 'react'
 import { ScrollView, View } from 'tamagui'
 
-export function StoryUIDecorator({ children }: PropsWithChildren) {
+export type StoryUIDecoratorProps = PropsWithChildren & {
+  centered?: boolean
+}
+
+export function StoryUIDecorator({
+  children,
+  centered = true,
+}: StoryUIDecoratorProps) {
   return (
-    <ScrollView flex={1} py="$2">
-      <View items="center">{children}</View>
+    <ScrollView flex={1} p="$2">
+      <View items={centered ? 'center' : 'unset'}>{children}</View>
     </ScrollView>
   )
 }

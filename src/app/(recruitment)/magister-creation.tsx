@@ -1,13 +1,3 @@
-import { BackgroundCoverImage } from '@/commons/components/background-cover-image/background-cover-image'
-import { PageFrame } from '@/commons/components/page-frame/page-frame'
+import { MagisterCreationPage } from '@/recruitment/components/magister-creation-page/magister-creation-page'
 
-export default function MagisterCreation() {
-  return (
-    <PageFrame>
-      <BackgroundCoverImage
-        source={require('@/assets/images/magister-creation.jpeg')}
-        filter="none"
-      />
-    </PageFrame>
-  )
-}
+export default MagisterCreationPage

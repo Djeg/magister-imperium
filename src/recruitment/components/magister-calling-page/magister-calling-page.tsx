@@ -1,21 +1,24 @@
-import { BackgroundCoverImage } from '@/commons/components/background-cover-image/background-cover-image'
+import { Background } from '@/commons/components/background/background'
 import { Button } from '@/commons/components/button/button'
 import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-frame'
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
+import type { Action } from '@/commons/libs/react/react.action'
 import { t } from '@/commons/libs/translations/translations'
-import { router } from 'expo-router'
 import { Heading, Image, styled, Text, View, YStack } from 'tamagui'
 
-export function MagisterCallingPage() {
-  const handleSign = () => {
-    router.push('/magister-creation')
-  }
+export type MagisterCallingPageProps = {
+  onSign: Action
+  onJoin: Action
+}
 
+export function MagisterCallingPage({
+  onSign,
+  onJoin,
+}: MagisterCallingPageProps) {
   return (
     <PageFrame>
-      <BackgroundCoverImage
+      <Background.CoverImage
         source={require('@/assets/images/city-background.jpeg')}
-        filter="none"
       />
       <PageFrame.Centered withHorizontalPadding>
         <View flex={1} justify="center" items="center">
@@ -55,10 +58,10 @@ export function MagisterCallingPage() {
           </DecoratedFrame>
         </View>
         <HButtonStack justify="center" items="center">
-          <Button frameProps={{ flex: 1 }} onPress={handleSign}>
+          <Button frameProps={{ flex: 1 }} onPress={onSign}>
             {t('recruitment.MagisterCallingPage.btns.sign')}
           </Button>
-          <Button frameProps={{ flex: 1 }}>
+          <Button frameProps={{ flex: 1 }} onPress={onJoin}>
             {t('recruitment.MagisterCallingPage.btns.join')}
           </Button>
         </HButtonStack>

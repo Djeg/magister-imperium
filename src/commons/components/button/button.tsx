@@ -16,16 +16,22 @@ export type ButtonProps = Except<
   frameProps?: DecoratedFrameProps
   frameSize?: DecoratedFrameSize
   size?: ButtonSize
+  stretch?: boolean
 }
 
 export function Button({
   size = 'md',
   frameSize = 'md',
   frameProps,
+  stretch = false,
   ...props
 }: ButtonProps) {
   return (
-    <DecoratedFrame size={frameSize} {...frameProps}>
+    <DecoratedFrame
+      size={frameSize}
+      flex={stretch ? 1 : undefined}
+      {...frameProps}
+    >
       <DecoratedButton decoratedSize={size} {...props} />
     </DecoratedFrame>
   )
@@ -68,4 +74,10 @@ const DecoratedButton = styled(TamaguiButton, {
   },
 })
 
+const Horizontal = styled(XStack, {
+  gap: '$2',
+  items: 'stretch',
+})
+
 Button.Group = Group
+Button.Horizontal = Horizontal
