@@ -17,6 +17,10 @@ export const recruitmentMessagesEn = {
     btns: {
       sign: 'Sign',
     },
+    name: {
+      label: 'Name:',
+      placeholder: 'Enter your name',
+    },
     email: {
       label: 'Email:',
       placeholder: 'Enter your email',
@@ -29,6 +33,10 @@ export const recruitmentMessagesEn = {
       label: 'Confirm password:',
       placeholder: 'Confirm your password',
     },
+  },
+
+  newMagisterSchema: {
+    passwordMismatch: 'The passwords mismatch',
   },
 }
 
@@ -51,6 +59,10 @@ export const recruitmentMessagesFr = {
     btns: {
       sign: 'Signer',
     },
+    name: {
+      label: 'Nom :',
+      placeholder: 'Entrez votre nom',
+    },
     email: {
       label: 'Email :',
       placeholder: 'Entrez votre email',
@@ -63,5 +75,9 @@ export const recruitmentMessagesFr = {
       label: 'Confirmer le mot de passe :',
       placeholder: 'Confirmez votre mot de passe',
     },
+  },
+
+  newMagisterSchema: {
+    passwordMismatch: 'Les mots de passe ne correspondent pas',
   },
 }

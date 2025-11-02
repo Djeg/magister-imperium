@@ -25,13 +25,23 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
               filter="none"
               bg="rgba(255, 255, 255, 0.8)"
             />
-            <YStack gap="$2" p="$2">
+            <YStack gap="$2" px="$2" py="$4">
               <Heading text="center" fontWeight="bold">
                 {t('recruitment.MagisterCreationPage.title')}
               </Heading>
               <Text text="center">
                 {t('recruitment.MagisterCreationPage.description')}
               </Text>
+              <FormField
+                label={t('recruitment.MagisterCreationPage.name.label')}
+              >
+                <FormField.Input
+                  autoCapitalize="none"
+                  placeholder={t(
+                    'recruitment.MagisterCreationPage.name.placeholder',
+                  )}
+                />
+              </FormField>
               <FormField
                 label={t('recruitment.MagisterCreationPage.email.label')}
               >
