@@ -5,18 +5,15 @@ import { FormField } from '@/commons/components/form-field/form-field'
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Action } from '@/commons/libs/react/react.action'
 import { t } from '@/commons/libs/translations/translations'
-import {
-  type NewMagister,
-  newMagisterSchema,
-} from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
+import { useMagisterCreationForm } from '@/recruitment/hooks/use-magister-creation-form/use-magister-creation-form'
+import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
 import { Memo } from '@legendapp/state/react'
-import { useForm } from '@tanstack/react-form'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterCreationPageProps = {
-  onSign: Action<NewMagister>
+  onSign: Action<MagisterCreation>
   $errors?: Observable<string[]>
 }
 
@@ -24,20 +21,7 @@ export function MagisterCreationPage({
   onSign,
   $errors = observable([]),
 }: MagisterCreationPageProps) {
-  const { Field, Subscribe, handleSubmit } = useForm({
-    defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
-    validators: {
-      onSubmit: newMagisterSchema,
-    },
-    onSubmit: ({ value }) => {
-      return onSign(newMagisterSchema.parse(value))
-    },
-  })
+  const { Field, Subscribe, handleSubmit } = useMagisterCreationForm({ onSign })
 
   return (
     <PageFrame edges={['bottom']}>

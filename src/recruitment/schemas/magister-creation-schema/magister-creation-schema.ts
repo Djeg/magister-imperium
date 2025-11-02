@@ -4,7 +4,7 @@ import { nameSchema } from '@/commons/schemas/name-schema/name-schema'
 import { passwordSchema } from '@/commons/schemas/password-schema/password-schema'
 import { z } from 'zod'
 
-export const newMagisterSchema = z
+export const magisterCreationSchema = z
   .object({
     name: nameSchema,
     email: emailSchema,
@@ -12,8 +12,8 @@ export const newMagisterSchema = z
     confirmPassword: passwordSchema,
   })
   .refine(data => data.password === data.confirmPassword, {
-    message: t('recruitment.newMagisterSchema.passwordMismatch'),
+    message: t('recruitment.magisterCreationSchema.passwordMismatch'),
     path: ['confirmPassword'],
   })
 
-export type NewMagister = z.infer<typeof newMagisterSchema>
+export type MagisterCreation = z.infer<typeof magisterCreationSchema>

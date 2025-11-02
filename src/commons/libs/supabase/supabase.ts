@@ -7,3 +7,9 @@ export type SupabaseClient = ReturnType<typeof createClient<Database>>
 export function createSupabaseClient(): SupabaseClient {
   return createClient<Database>(env('supabaseUrl'), env('supabaseAnonKey'))
 }
+
+export type SupabasePayload<
+  T extends Record<string, unknown> = Record<string, never>,
+> = {
+  supabase: SupabaseClient
+} & T

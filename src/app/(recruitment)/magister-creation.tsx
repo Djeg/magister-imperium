@@ -1,8 +1,3 @@
-import { MagisterCreationPage } from '@/recruitment/components/magister-creation-page/magister-creation-page'
-import { useMagisterCreationActor } from '@/recruitment/hooks/use-magister-creation-actor/use-magister-creation-actor'
+import { MagisterCreationScreen } from '@/recruitment/components/magister-creation-screen/magister-creation-screen'
 
-export default function MagisterCreation() {
-  const [$, { createNewMagister }] = useMagisterCreationActor()
-
-  return <MagisterCreationPage onSign={createNewMagister} $errors={$.errors} />
-}
+export default MagisterCreationScreen
