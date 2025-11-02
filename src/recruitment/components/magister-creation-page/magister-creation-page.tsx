@@ -154,15 +154,15 @@ export function MagisterCreationPage({
             {([canSubmit, isSubmitting]) => (
               <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
                 {isSubmitting ? (
-                  <Text>
+                  <Button.Label>
                     {t('recruitment.MagisterCreationPage.btns.submitting')}
-                  </Text>
+                  </Button.Label>
                 ) : (
                   <Button.Group>
                     <FontAwesome name="pencil" size={14} color="black" />
-                    <Text>
+                    <Button.Label>
                       {t('recruitment.MagisterCreationPage.btns.sign')}
-                    </Text>
+                    </Button.Label>
                   </Button.Group>
                 )}
               </Button>

@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react'
-import { styled, Button as TamaguiButton, XStack } from 'tamagui'
+import { styled, Button as TamaguiButton, Text, XStack } from 'tamagui'
 import type { Except } from 'type-fest'
 import {
   DecoratedFrame,
@@ -79,5 +79,11 @@ const Horizontal = styled(XStack, {
   items: 'stretch',
 })
 
+const Label = styled(Text, {
+  fontWeight: 'bold',
+  color: 'black',
+})
+
 Button.Group = Group
 Button.Horizontal = Horizontal
+Button.Label = Label

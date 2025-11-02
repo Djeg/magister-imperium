@@ -2,7 +2,6 @@ import { Button } from '@/commons/components/button/button'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { fn } from 'storybook/test'
-import { Text } from 'tamagui'
 import { StoryUIDecorator } from '../storybook/story-ui-decorator'
 
 const meta = {
@@ -44,7 +43,7 @@ export const DefaultButton: Story = {
   },
   render: props => (
     <Button {...props}>
-      <Text>Some Button</Text>
+      <Button.Label>Some Button</Button.Label>
     </Button>
   ),
 }
@@ -74,7 +73,7 @@ export const ButtonIconGroupStory: Story = {
     <Button {...props}>
       <Button.Group>
         <FontAwesome name="home" size={16} />
-        <Text>Home</Text>
+        <Button.Label>Home</Button.Label>
       </Button.Group>
     </Button>
   ),

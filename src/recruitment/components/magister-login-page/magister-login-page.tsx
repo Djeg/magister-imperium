@@ -109,9 +109,9 @@ export function MagisterLoginPage({
             {([canSubmit, isSubmitting]) => (
               <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
                 {isSubmitting ? (
-                  <Text>
+                  <Button.Label>
                     {t('recruitment.MagisterLoginPage.btns.submitting')}
-                  </Text>
+                  </Button.Label>
                 ) : (
                   <Button.Group>
                     <FontAwesome
@@ -119,7 +119,9 @@ export function MagisterLoginPage({
                       size={14}
                       color="black"
                     />
-                    <Text>{t('recruitment.MagisterLoginPage.btns.login')}</Text>
+                    <Button.Label>
+                      {t('recruitment.MagisterLoginPage.btns.login')}
+                    </Button.Label>
                   </Button.Group>
                 )}
               </Button>

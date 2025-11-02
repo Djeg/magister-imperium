@@ -1,4 +1,9 @@
 export const commonsMessagesEn = {
+  GlobalErrorFallback: {
+    title: 'An error occurred',
+    reset: 'Reset',
+  },
+
   nameSchema: {
     invalid: 'Your name must be at least 1 character long',
   },
@@ -16,6 +21,11 @@ export const commonsMessagesEn = {
 }
 
 export const commonsMessagesFr = {
+  GlobalErrorFallback: {
+    title: 'Une erreur est survenue',
+    reset: 'Recommencer',
+  },
+
   nameSchema: {
     invalid: 'Votre nom doit contenir au moins 1 caractère',
   },
