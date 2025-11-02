@@ -1,16 +1,30 @@
 import { Button } from '@/commons/components/button/button'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { fn } from 'storybook/test'
-import { View } from 'tamagui'
+import { StoryUIDecorator } from '../storybook/story-ui-decorator'
 
 const meta = {
   title: 'commons/button',
   component: Button,
+  argTypes: {
+    size: {
+      options: ['sm', 'md', 'lg', 'xl'],
+      control: {
+        type: 'select',
+      },
+    },
+    frameSize: {
+      options: ['sm', 'md', 'lg', 'xl'],
+      control: {
+        type: 'select',
+      },
+    },
+  },
   decorators: [
     Story => (
-      <View flex={1} items="center" justify="center">
+      <StoryUIDecorator>
         <Story />
-      </View>
+      </StoryUIDecorator>
     ),
   ],
   tags: ['autodocs'],
@@ -24,7 +38,9 @@ type Story = StoryObj<typeof meta>
 export const DefaultButton: Story = {
   args: {
     children: 'Some Button',
+    size: 'md',
+    frameSize: 'md',
   },
 }
 
-DefaultButton.storyName = 'Default'
+DefaultButton.storyName = 'Button'

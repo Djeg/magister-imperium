@@ -14,5 +14,9 @@ export function TamaguiProvider({
   children,
   config = tamaguiConfig,
 }: TamaguiProviderProps) {
-  return <BaseTamaguiProvider config={config}>{children}</BaseTamaguiProvider>
+  return (
+    <BaseTamaguiProvider config={config} defaultTheme="magister">
+      {children}
+    </BaseTamaguiProvider>
+  )
 }

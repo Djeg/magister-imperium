@@ -1,19 +1,19 @@
 import { type ComponentProps, useMemo } from 'react'
-import { Image, View } from 'tamagui'
+import { Image, styled, View } from 'tamagui'
 
-export type UIFrameSize = 'sm' | 'md' | 'lg' | 'xl'
+export type DecoratedFrameSize = 'sm' | 'md' | 'lg' | 'xl'
 
-export type UIFrameProps = ComponentProps<typeof View> & {
-  frameSize?: UIFrameSize
+export type DecoratedFrameProps = ComponentProps<typeof View> & {
+  size?: DecoratedFrameSize
 }
 
-export function UIFrame({
+export function DecoratedFrame({
   children,
-  frameSize = 'md',
+  size = 'md',
   ...props
-}: UIFrameProps) {
+}: DecoratedFrameProps) {
   const sizeInPixels = useMemo(() => {
-    switch (frameSize) {
+    switch (size) {
       case 'md':
         return 8
       case 'sm':
@@ -23,12 +23,12 @@ export function UIFrame({
       default:
         return 18
     }
-  }, [frameSize])
+  }, [size])
 
   return (
     <View position="relative" p={sizeInPixels} {...props}>
       {children}
-      <View position="absolute" t={0} l={0} r={0} b={0}>
+      <AbsoluteWrapper>
         <Image
           position="absolute"
           t={0}
@@ -65,7 +65,15 @@ export function UIFrame({
           height={sizeInPixels}
           resizeMode="stretch"
         />
-      </View>
+      </AbsoluteWrapper>
     </View>
   )
 }
+
+const AbsoluteWrapper = styled(View, {
+  position: 'absolute',
+  t: 0,
+  l: 0,
+  r: 0,
+  b: 0,
+})
