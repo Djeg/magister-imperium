@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { AuthProvider } from '../auth-provider/auth-provider'
 import { FontProvider } from '../font-provider/font-provider'
 import { GlobalErrorBoundary } from '../global-error-boundary/global-error-boundary'
 import { SplashScreenSuspense } from '../splash-screen-suspense/splash-screen-suspense'
@@ -20,9 +21,11 @@ export function RootProvider({ children }: RootProviderProps) {
             <GlobalErrorBoundary>
               <SupabaseProvider>
                 <TranslationsProvider>
-                  <SplashScreenSuspense.Ending>
-                    {children}
-                  </SplashScreenSuspense.Ending>
+                  <AuthProvider>
+                    <SplashScreenSuspense.Ending>
+                      {children}
+                    </SplashScreenSuspense.Ending>
+                  </AuthProvider>
                 </TranslationsProvider>
               </SupabaseProvider>
             </GlobalErrorBoundary>

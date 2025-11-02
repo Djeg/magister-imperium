@@ -1,5 +1,5 @@
 import { t } from '@/commons/libs/translations/translations'
-import { useMutationMagisterLogin } from '@/recruitment/hooks/use-mutation-magister-login/use-mutation-magister-login'
+import { useMagisterLoginMutation } from '@/recruitment/hooks/use-magister-login-mutation/use-magister-login-mutation'
 import type { MagisterCredentials } from '@/recruitment/schemas/magister-credentials-schema/magister-credentials-schema'
 import { useObservable } from '@legendapp/state/react'
 
@@ -8,7 +8,7 @@ export type MagisterLoginState = {
 }
 
 export function useMagisterLoginStore() {
-  const mutationMagisterLogin = useMutationMagisterLogin()
+  const mutationMagisterLogin = useMagisterLoginMutation()
   const $ = useObservable<MagisterLoginState>({
     errors: [],
   })
