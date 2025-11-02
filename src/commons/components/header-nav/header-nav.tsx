@@ -13,7 +13,7 @@ export function HeaderNav({ children, ...props }: HeaderNavProps) {
         source={require('@/assets/images/clouds-header-background.jpeg')}
         filter="light"
       />
-      <SafeAreaView edges={['top', 'left', 'right']}>
+      <SafeAreaView edges={['top']}>
         <XStack items="center" justify="space-between" p="$4">
           {children}
         </XStack>

@@ -9,7 +9,7 @@ export const passwordSchema = z
   .regex(/[A-Z]{1}/, {
     message: t('commons.passwordSchema.maj'),
   })
-  .regex(/[0-9]]{1}/, {
+  .regex(/[0-9]{1}/, {
     message: t('commons.passwordSchema.number'),
   })
   .regex(/[@$!%*?&-_ ]{1}/, {

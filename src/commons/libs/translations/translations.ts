@@ -10,8 +10,11 @@ export type TranslationKey = Paths<
   }
 >
 
-export function translate<T extends TranslationKey>(key: T) {
-  return baseT(key)
+export function translate<T extends TranslationKey>(
+  key: T,
+  values?: Record<string, string>,
+) {
+  return baseT(key, values)
 }
 
 export function configureI18next() {

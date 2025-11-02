@@ -5,7 +5,8 @@ import { SupabaseProvider } from '@/commons/components/supabase-provider/supabas
 import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-provider'
 import { TanstackQueryProvider } from '@/commons/components/tanstack-query-provider/tanstack-query-provider'
 import { TranslationsProvider } from '@/commons/components/translations-provider/translations-provider'
-import { Stack } from 'expo-router'
+import { MagisterCreationHeaderNav } from '@/recruitment/components/magister-creation-header-nav/magister-creation-header-nav'
+import { router, Stack } from 'expo-router'
 
 export default function RootLayout() {
   return (
@@ -17,7 +18,23 @@ export default function RootLayout() {
               <SupabaseProvider>
                 <TranslationsProvider>
                   <SplashScreenSuspense.Ending>
-                    <Stack screenOptions={{ headerShown: false }} />
+                    <Stack>
+                      <Stack.Screen
+                        name="index"
+                        options={{ headerShown: false }}
+                      />
+                      <Stack.Screen
+                        name="(recruitment)/magister-creation"
+                        options={{
+                          animation: 'slide_from_left',
+                          header: () => (
+                            <MagisterCreationHeaderNav
+                              onBack={() => router.back()}
+                            />
+                          ),
+                        }}
+                      />
+                    </Stack>
                   </SplashScreenSuspense.Ending>
                 </TranslationsProvider>
               </SupabaseProvider>

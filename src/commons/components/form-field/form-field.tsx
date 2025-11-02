@@ -37,6 +37,22 @@ const Label = styled(Text, {
 
 const Input = styled(TamaguiInput, {
   rounded: 0,
+
+  variants: {
+    errored: {
+      true: {
+        borderWidth: 1,
+        borderColor: 'red',
+      },
+      false: {
+        borderWidth: 1,
+        borderColor: '$color.goldExtraLight',
+      },
+    } as const,
+  },
+  defaultVariants: {
+    errored: false,
+  },
 })
 
 const ErrorList = styled(YStack, {

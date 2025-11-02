@@ -28,13 +28,14 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
     validators: {
       onSubmit: newMagisterSchema,
     },
-    onSubmit: values => {
-      return onSign(newMagisterSchema.parse(values))
+    onSubmit: ({ value }) => {
+      console.warn(value)
+      return onSign(newMagisterSchema.parse(value))
     },
   })
 
   return (
-    <PageFrame>
+    <PageFrame edges={['bottom']}>
       <Background.CoverImage
         source={require('@/assets/images/magister-creation.jpeg')}
       />
@@ -52,13 +53,14 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
               <Text text="center">
                 {t('recruitment.MagisterCreationPage.description')}
               </Text>
-              <FormField
-                label={t('recruitment.MagisterCreationPage.name.label')}
-              >
-                <Field name="name">
-                  {field => (
+              <Field name="name">
+                {field => (
+                  <FormField
+                    label={t('recruitment.MagisterCreationPage.name.label')}
+                  >
                     <FormField.Input
                       id={field.name}
+                      errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChangeText={field.handleChange}
@@ -67,16 +69,20 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
                         'recruitment.MagisterCreationPage.name.placeholder',
                       )}
                     />
-                  )}
-                </Field>
-              </FormField>
-              <FormField
-                label={t('recruitment.MagisterCreationPage.email.label')}
-              >
-                <Field name="email">
-                  {field => (
+                  </FormField>
+                )}
+              </Field>
+              <Field name="email">
+                {field => (
+                  <FormField
+                    label={t('recruitment.MagisterCreationPage.email.label')}
+                    errors={field.state.meta.errors.map(
+                      error => error?.message ?? '',
+                    )}
+                  >
                     <FormField.Input
                       id={field.name}
+                      errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChangeText={field.handleChange}
@@ -85,16 +91,20 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
                         'recruitment.MagisterCreationPage.email.placeholder',
                       )}
                     />
-                  )}
-                </Field>
-              </FormField>
-              <FormField
-                label={t('recruitment.MagisterCreationPage.password.label')}
-              >
-                <Field name="password">
-                  {field => (
+                  </FormField>
+                )}
+              </Field>
+              <Field name="password">
+                {field => (
+                  <FormField
+                    label={t('recruitment.MagisterCreationPage.password.label')}
+                    errors={field.state.meta.errors.map(
+                      error => error?.message ?? '',
+                    )}
+                  >
                     <FormField.Input
                       id={field.name}
+                      errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChangeText={field.handleChange}
@@ -104,18 +114,22 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
                         'recruitment.MagisterCreationPage.password.placeholder',
                       )}
                     />
-                  )}
-                </Field>
-              </FormField>
-              <FormField
-                label={t(
-                  'recruitment.MagisterCreationPage.confirmPassword.label',
+                  </FormField>
                 )}
-              >
-                <Field name="confirmPassword">
-                  {field => (
+              </Field>
+              <Field name="confirmPassword">
+                {field => (
+                  <FormField
+                    label={t(
+                      'recruitment.MagisterCreationPage.confirmPassword.label',
+                    )}
+                    errors={field.state.meta.errors.map(
+                      error => error?.message ?? '',
+                    )}
+                  >
                     <FormField.Input
                       id={field.name}
+                      errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChangeText={field.handleChange}
@@ -125,9 +139,9 @@ export function MagisterCreationPage({ onSign }: MagisterCreationPageProps) {
                       autoCapitalize="none"
                       secureTextEntry
                     />
-                  )}
-                </Field>
-              </FormField>
+                  </FormField>
+                )}
+              </Field>
             </YStack>
           </DecoratedFrame>
         </ScrollView>
