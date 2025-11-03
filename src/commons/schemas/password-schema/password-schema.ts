@@ -6,13 +6,13 @@ export const passwordSchema = z
   .min(8, {
     message: t('commons.passwordSchema.min'),
   })
-  .regex(/[A-Z]{1}/, {
+  .regex(/[A-Z]/, {
     message: t('commons.passwordSchema.maj'),
   })
-  .regex(/[0-9]{1}/, {
+  .regex(/[0-9]/, {
     message: t('commons.passwordSchema.number'),
   })
-  .regex(/[@$!%*?&-_ ]{1}/, {
+  .regex(/[!@#$%^&*(),.?":{}|<>£€$%*?&\-_+#@&=]/, {
     message: t('commons.passwordSchema.special'),
   })
 
