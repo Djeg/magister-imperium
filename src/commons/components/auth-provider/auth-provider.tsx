@@ -4,6 +4,7 @@ import type { Action } from '@/commons/libs/react/react.action'
 import type { Magister } from '@/commons/schemas/magister-schema/magister-schema'
 import { type Observable, observable } from '@legendapp/state'
 import { useObservable, useSelector } from '@legendapp/state/react'
+import { type RelativePathString, router } from 'expo-router'
 import {
   createContext,
   type PropsWithChildren,
@@ -15,6 +16,7 @@ import {
 export type AuthState = {
   authenticated: boolean
   magister?: Magister
+  postAuthenticationRoute?: RelativePathString
 }
 
 export type AuthActions = {
@@ -51,6 +53,10 @@ export function AuthProvider({
       authenticated: true,
       magister,
     })
+
+    if ($auth.postAuthenticationRoute) {
+      router.push($auth.postAuthenticationRoute.peek())
+    }
   }
 
   const unauthenticate = () => {
