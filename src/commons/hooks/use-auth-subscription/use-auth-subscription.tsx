@@ -1,9 +1,9 @@
+import { useSupabase } from '@/commons/hooks/use-supabase/use-supabase'
 import {
   type AuthSubscriptionPayload,
   authSubscription,
 } from '@/commons/subscriptions/auth-subscription/auth-subscription'
 import { useEffect } from 'react'
-import { useSupabase } from '../use-supabase/use-supabase'
 
 export function useAuthSubscription({
   onLogin,

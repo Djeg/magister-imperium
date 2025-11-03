@@ -1,6 +1,6 @@
+import { FormField } from '@/commons/components/form-field/form-field'
+import { StoryUIDecorator } from '@/commons/components/storybook/story-ui-decorator'
 import type { Meta, StoryObj } from '@storybook/react-native'
-import { StoryUIDecorator } from '../storybook/story-ui-decorator'
-import { FormField } from './form-field'
 
 export default {
   title: 'commons/form-field',

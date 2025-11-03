@@ -1,6 +1,6 @@
+import { MagisterCreationPage } from '@/recruitment/components/magister-creation-page/magister-creation-page'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { action } from 'storybook/actions'
-import { MagisterCreationPage } from './magister-creation-page'
 
 export default {
   title: 'recruitment/magister-creation-page',

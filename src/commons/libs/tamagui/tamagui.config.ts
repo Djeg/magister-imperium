@@ -1,8 +1,8 @@
+import { magisterFonts } from '@/commons/libs/tamagui/magister.fonts'
+import { magisterThemes } from '@/commons/libs/tamagui/magister.theme'
+import { magisterTokens } from '@/commons/libs/tamagui/magister.tokens'
 import { defaultConfig } from '@tamagui/config/v4'
 import { createTamagui } from 'tamagui'
-import { magisterFonts } from './magister.fonts'
-import { magisterThemes } from './magister.theme'
-import { magisterTokens } from './magister.tokens'
 
 export const tamaguiConfig = createTamagui({
   ...defaultConfig,

@@ -1,8 +1,8 @@
 import { Button } from '@/commons/components/button/button'
+import { StoryUIDecorator } from '@/commons/components/storybook/story-ui-decorator'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { fn } from 'storybook/test'
-import { StoryUIDecorator } from '../storybook/story-ui-decorator'
 
 const meta = {
   title: 'commons/button',

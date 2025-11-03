@@ -1,11 +1,11 @@
-import type { ComponentProps } from 'react'
-import { styled, Button as TamaguiButton, Text, XStack } from 'tamagui'
-import type { Except } from 'type-fest'
 import {
   DecoratedFrame,
   type DecoratedFrameProps,
   type DecoratedFrameSize,
-} from '../decorated-frame/decorated-frame'
+} from '@/commons/components/decorated-frame/decorated-frame'
+import type { ComponentProps } from 'react'
+import { styled, Button as TamaguiButton, Text, XStack } from 'tamagui'
+import type { Except } from 'type-fest'
 
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl'
 

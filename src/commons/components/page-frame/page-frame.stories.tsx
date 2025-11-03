@@ -1,6 +1,6 @@
+import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { Heading } from 'tamagui'
-import { PageFrame } from './page-frame'
 
 export default {
   title: 'commons/page-frame',

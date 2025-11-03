@@ -1,15 +1,16 @@
+import { useSupabase } from '@/commons/hooks/use-supabase/use-supabase'
 import {
   AUTH_QUERY_KEY,
   authQuery,
 } from '@/commons/queries/auth-query/auth-query'
-import { useSuspenseQuery } from '@tanstack/react-query'
-import { useSupabase } from '../use-supabase/use-supabase'
+import { useQuery } from '@tanstack/react-query'
 
 export function useAuthQuery() {
   const supabase = useSupabase()
 
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: [AUTH_QUERY_KEY],
     queryFn: () => authQuery({ supabase }),
+    retry: false,
   })
 }
