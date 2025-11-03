@@ -1,4 +1,4 @@
-class Failure extends Error {
+export class Failure extends Error {
   constructor(name: string, message: string, errorOptions?: ErrorOptions) {
     super(message, errorOptions)
 

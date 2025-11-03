@@ -19,8 +19,17 @@ export async function authQuery({ supabase }: SupabasePayload) {
   }
 
   if (error) {
-    failure(AuthQueryFailure, 'Failed to query auth', {
-      cause: error,
+    return authSchema.parse({
+      authenticated: false,
+      failure: new AuthQueryFailure('Failed to query auth', {
+        cause: error,
+      }),
+    })
+  }
+
+  if (!data.user?.id) {
+    return authSchema.parse({
+      authenticated: false,
     })
   }
 

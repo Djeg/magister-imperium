@@ -1,8 +1,9 @@
 import { useAuthQuery } from '@/commons/hooks/use-auth-query/use-auth-query'
 import { useAuthSubscription } from '@/commons/hooks/use-auth-subscription/use-auth-subscription'
+import type { Failure } from '@/commons/libs/failure/failure'
 import type { Action } from '@/commons/libs/react/react.action'
 import type { Magister } from '@/commons/schemas/magister-schema/magister-schema'
-import { type Observable, observable } from '@legendapp/state'
+import { type Observable, observable, opaqueObject } from '@legendapp/state'
 import { useObservable, useSelector } from '@legendapp/state/react'
 import { type RelativePathString, router } from 'expo-router'
 import {
@@ -17,11 +18,14 @@ export type AuthState = {
   authenticated: boolean
   magister?: Magister
   postAuthenticationRoute?: RelativePathString
+  failure?: Failure
 }
 
 export type AuthActions = {
   authenticate: Action<Magister>
   unauthenticate: Action<void>
+  setPostAuthenticationRoute: Action<RelativePathString>
+  setFailure: Action<Failure>
 }
 
 export const initialAuth: AuthState = {
@@ -35,6 +39,8 @@ export const AuthStateContext = createContext<Observable<AuthState>>(
 export const AuthActionsContext = createContext<AuthActions>({
   authenticate: () => {},
   unauthenticate: () => {},
+  setPostAuthenticationRoute: () => {},
+  setFailure: () => {},
 })
 
 export type AuthProviderProps = {
@@ -66,6 +72,14 @@ export function AuthProvider({
     })
   }
 
+  const setPostAuthenticationRoute = (route: RelativePathString) => {
+    $auth.postAuthenticationRoute.set(route)
+  }
+
+  const setFailure = (failure: Failure) => {
+    $auth.failure.set(opaqueObject(failure))
+  }
+
   useAuthSubscription({
     onLogin: authenticate,
     onLogout: unauthenticate,
@@ -73,7 +87,14 @@ export function AuthProvider({
 
   return (
     <AuthStateContext.Provider value={$auth}>
-      <AuthActionsContext.Provider value={{ authenticate, unauthenticate }}>
+      <AuthActionsContext.Provider
+        value={{
+          authenticate,
+          unauthenticate,
+          setPostAuthenticationRoute,
+          setFailure,
+        }}
+      >
         <ConditionalAuth>{children}</ConditionalAuth>
       </AuthActionsContext.Provider>
     </AuthStateContext.Provider>
@@ -90,14 +111,20 @@ function ConditionalAuth({ children }: PropsWithChildren) {
 }
 
 function AuthQuery({ children }: PropsWithChildren) {
-  const { authenticate } = useContext(AuthActionsContext)
+  const { authenticate, setFailure } = useContext(AuthActionsContext)
   const { data: auth } = useAuthQuery()
 
   useEffect(() => {
-    if (!auth || !auth.magister) return
+    if (!auth) return
+
+    if (auth.failure) {
+      setFailure(auth.failure)
+    }
+
+    if (!auth.magister) return
 
     authenticate(auth.magister)
-  }, [auth, authenticate])
+  }, [auth, authenticate, setFailure])
 
   return children
 }
