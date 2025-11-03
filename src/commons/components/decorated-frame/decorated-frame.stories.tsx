@@ -1,7 +1,7 @@
+import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-frame'
+import { StoryUIDecorator } from '@/commons/components/storybook/story-ui-decorator'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { Text, View } from 'tamagui'
-import { StoryUIDecorator } from '../storybook/story-ui-decorator'
-import { DecoratedFrame } from './decorated-frame'
 
 export default {
   title: 'commons/decorated-frame',

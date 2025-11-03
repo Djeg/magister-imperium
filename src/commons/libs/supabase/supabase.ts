@@ -1,6 +1,6 @@
 import { env } from '@/commons/libs/env/env'
+import type { Database } from '@/commons/libs/supabase/supabase.types'
 import { createClient } from '@supabase/supabase-js'
-import type { Database } from './supabase.types'
 
 export type SupabaseClient = ReturnType<typeof createClient<Database>>
 

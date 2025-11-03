@@ -1,6 +1,6 @@
+import { MagisterCreationHeaderNav } from '@/recruitment/components/magister-creation-header-nav/magister-creation-header-nav'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { action } from 'storybook/actions'
-import { MagisterCreationHeaderNav } from './magister-creation-header-nav'
 
 export default {
   title: 'recruitment/magister-creation-header-nav',

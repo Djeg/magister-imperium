@@ -1,5 +1,5 @@
+import { MagisterLoginPage } from '@/recruitment/components/magister-login-page/magister-login-page'
 import type { Meta, StoryObj } from '@storybook/react-native'
-import { MagisterLoginPage } from './magister-login-page'
 
 export default {
   title: 'recruitment/magister-login-page',

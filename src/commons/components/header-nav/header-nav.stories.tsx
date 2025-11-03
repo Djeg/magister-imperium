@@ -1,7 +1,7 @@
+import { HeaderNav } from '@/commons/components/header-nav/header-nav'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import type { Meta, StoryObj } from '@storybook/react-native'
 import { Heading } from 'tamagui'
-import { HeaderNav } from './header-nav'
 
 export default {
   title: 'commons/header-nav',

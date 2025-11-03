@@ -1,7 +1,7 @@
 import { t } from '@/commons/libs/translations/translations'
+import { useSignUpMutation } from '@/recruitment/hooks/use-sign-up-mutation/use-sign-up-mutation'
 import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
 import { useObservable } from '@legendapp/state/react'
-import { useSignUpMutation } from '../use-sign-up-mutation/use-sign-up-mutation'
 
 export type MagisterCreationState = {
   errors: string[]

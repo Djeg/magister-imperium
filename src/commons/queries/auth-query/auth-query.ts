@@ -1,7 +1,7 @@
 import { failure } from '@/commons/libs/failure/failure'
 import type { SupabasePayload } from '@/commons/libs/supabase/supabase'
+import { magisterQuery } from '@/commons/queries/magister-query/magister-query'
 import { authSchema } from '@/commons/schemas/auth-schema/auth-schema'
-import { magisterQuery } from '../magister-query/magister-query'
 
 export const AUTH_QUERY_KEY = 'commons/queries/auth'
 

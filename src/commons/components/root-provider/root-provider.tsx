@@ -1,12 +1,12 @@
+import { AuthProvider } from '@/commons/components/auth-provider/auth-provider'
+import { FontProvider } from '@/commons/components/font-provider/font-provider'
+import { GlobalErrorBoundary } from '@/commons/components/global-error-boundary/global-error-boundary'
+import { SplashScreenSuspense } from '@/commons/components/splash-screen-suspense/splash-screen-suspense'
+import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
+import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-provider'
+import { TanstackQueryProvider } from '@/commons/components/tanstack-query-provider/tanstack-query-provider'
+import { TranslationsProvider } from '@/commons/components/translations-provider/translations-provider'
 import type { ReactNode } from 'react'
-import { AuthProvider } from '../auth-provider/auth-provider'
-import { FontProvider } from '../font-provider/font-provider'
-import { GlobalErrorBoundary } from '../global-error-boundary/global-error-boundary'
-import { SplashScreenSuspense } from '../splash-screen-suspense/splash-screen-suspense'
-import { SupabaseProvider } from '../supabase-provider/supabase-provider'
-import { TamaguiProvider } from '../tamagui-provider/tamagui-provider'
-import { TanstackQueryProvider } from '../tanstack-query-provider/tanstack-query-provider'
-import { TranslationsProvider } from '../translations-provider/translations-provider'
 
 export type RootProviderProps = {
   children: ReactNode

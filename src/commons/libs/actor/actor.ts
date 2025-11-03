@@ -1,5 +1,5 @@
+import type { Action } from '@/commons/libs/react/react.action'
 import type { Observable } from '@legendapp/state'
-import type { Action } from '../react/react.action'
 
 export type ActionRecord = {
   // biome-ignore lint/suspicious/noExplicitAny: could be any actions
