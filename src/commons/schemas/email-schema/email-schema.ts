@@ -1,5 +1,5 @@
 import { t } from '@/commons/libs/translations/translations'
-import z from 'zod'
+import { z } from 'zod'
 
 export const emailSchema = z.email({
   message: t('commons.emailSchema.invalid'),

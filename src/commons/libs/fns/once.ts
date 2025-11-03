@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noExplicitAny: we explicitly want to allow any type
 export function once<Fn extends (...args: any[]) => any>(fn: Fn) {
   const unresolvedSymbol = Symbol('unresolved')
   let result: ReturnType<Fn> = unresolvedSymbol as ReturnType<Fn>
