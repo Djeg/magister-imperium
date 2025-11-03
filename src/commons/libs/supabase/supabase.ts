@@ -9,7 +9,7 @@ export function createSupabaseClient(): SupabaseClient {
 }
 
 export type SupabasePayload<
-  T extends Record<string, unknown> = Record<string, never>,
+  T extends Record<string, unknown> = Record<string, unknown>,
 > = {
   supabase: SupabaseClient
 } & T

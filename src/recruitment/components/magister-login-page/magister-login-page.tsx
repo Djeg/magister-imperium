@@ -9,7 +9,7 @@ import { useMagisterLoginForm } from '@/recruitment/hooks/use-magister-login-for
 import type { MagisterCredentials } from '@/recruitment/schemas/magister-credentials-schema/magister-credentials-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
-import { Memo } from '@legendapp/state/react'
+import { Computed } from '@legendapp/state/react'
 import { StatusBar } from 'react-native'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
@@ -46,7 +46,7 @@ export function MagisterLoginPage({
               <Text text="center">
                 {t('recruitment.MagisterLoginPage.description')}
               </Text>
-              <Memo>
+              <Computed>
                 {() =>
                   $errors.get().length ? (
                     <FormField.ErrorList>
@@ -58,7 +58,7 @@ export function MagisterLoginPage({
                     </FormField.ErrorList>
                   ) : null
                 }
-              </Memo>
+              </Computed>
               <Field name="email">
                 {field => (
                   <FormField

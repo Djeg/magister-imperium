@@ -9,7 +9,7 @@ import { useMagisterCreationForm } from '@/recruitment/hooks/use-magister-creati
 import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
-import { Memo } from '@legendapp/state/react'
+import { Computed } from '@legendapp/state/react'
 import { StatusBar } from 'react-native'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
@@ -44,7 +44,7 @@ export function MagisterCreationPage({
               <Text text="center">
                 {t('recruitment.MagisterCreationPage.description')}
               </Text>
-              <Memo>
+              <Computed>
                 {() =>
                   $errors.get().length ? (
                     <FormField.ErrorList>
@@ -56,7 +56,7 @@ export function MagisterCreationPage({
                     </FormField.ErrorList>
                   ) : null
                 }
-              </Memo>
+              </Computed>
               <Field name="name">
                 {field => (
                   <FormField

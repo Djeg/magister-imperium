@@ -3,21 +3,21 @@ import { magisterSchema } from '@/commons/schemas/magister-schema/magister-schem
 import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
 import type { SupabaseClient } from '@supabase/supabase-js'
 
-export type MutationNewMagisterPayload = {
+export type NewMagisterMutationPayload = {
   supabase: SupabaseClient
   userId: string
   newMagister: MagisterCreation
 }
 
-export class MutationNewMagisterFailure extends failure.named(
-  'recruitment/mutations/mutation-new-magister',
+export class NewMagisterMutationFailure extends failure.named(
+  'recruitment/mutations/new-magister-mutation',
 ) {}
 
-export async function mutationNewMagister({
+export async function newMagisterMutation({
   supabase,
   userId,
   newMagister,
-}: MutationNewMagisterPayload) {
+}: NewMagisterMutationPayload) {
   const { data, error } = await supabase
     .from('magisters')
     .insert({
@@ -28,7 +28,7 @@ export async function mutationNewMagister({
     .single()
 
   if (error || !data) {
-    failure(MutationNewMagisterFailure, 'Failed to insert the magister', {
+    failure(NewMagisterMutationFailure, 'Failed to insert the magister', {
       cause: error,
     })
   }
