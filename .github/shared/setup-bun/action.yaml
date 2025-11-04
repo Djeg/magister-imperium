@@ -4,9 +4,6 @@ description: "Setup bun environment to run the project CI"
 runs:
   using: "composite"
   steps:
-    - name: "Checkout code"
-      uses: actions/checkout@v3
-
     - name: "Setup bun"
       uses: oven-sh/setup-bun@v1
   
