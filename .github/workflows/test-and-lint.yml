@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: "./.github/shared/setup-bun"
+      - uses: ./.github/shared/setup-bun
       - name: Run typescript compiler check
         run: bun tsc
 
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: "./.github/shared/setup-bun"
+      - uses: ./.github/shared/setup-bun
       - name: Run biome and expo linting
         run: bun lint
 
@@ -29,6 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: "./.github/shared/setup-bun"
+      - uses: ./.github/shared/setup-bun
       - name: Run jest tests
         run: bun test:all
