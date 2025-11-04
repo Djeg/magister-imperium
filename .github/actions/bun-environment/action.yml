@@ -1,4 +1,5 @@
 name: "Setup bun environment"
+description: "Setup bun environment to run the project CI"
 
 runs:
   using: "composite"
@@ -10,8 +11,10 @@ runs:
       uses: oven-sh/setup-bun@v1
   
     - name: "Install dependencies"
+      shell: zsh
       run: bun install
 
     - name: "Setup environment variables"
+      shell: zsh
       run: |
         cp .env.dist .env
