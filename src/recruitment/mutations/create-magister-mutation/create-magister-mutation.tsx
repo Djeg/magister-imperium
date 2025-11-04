@@ -43,6 +43,6 @@ export async function createMagisterMutation({
 
   return magisterSchema.parse({
     ...magisterData,
-    userId: userData.user.id,
+    userId: magisterData.user_id,
   })
 }
