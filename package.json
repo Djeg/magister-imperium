@@ -12,7 +12,8 @@
     "test:all": "bun --env-file .env jest --verbose --all",
     "test:watch": "bun --env-file .env jest --verbose --watch",
     "jest": "jest",
-    "supabase:gen:types": "bun run .scripts/supabase-gen-types.ts"
+    "supabase:gen:types": "bun run .scripts/supabase-gen-types.ts",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@expo-google-fonts/pixelify-sans": "^0.4.2",

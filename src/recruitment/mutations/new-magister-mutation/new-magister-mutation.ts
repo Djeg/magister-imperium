@@ -1,7 +1,7 @@
 import { failure } from '@/commons/libs/failure/failure'
+import type { SupabaseClient } from '@/commons/libs/supabase/supabase'
 import { magisterSchema } from '@/commons/schemas/magister-schema/magister-schema'
 import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
-import type { SupabaseClient } from '@supabase/supabase-js'
 
 export type NewMagisterMutationPayload = {
   supabase: SupabaseClient

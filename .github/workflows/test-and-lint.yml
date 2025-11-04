@@ -25,8 +25,11 @@ jobs:
         run: |
           cp .env.dist .env
 
-      - name: Run tests
-        run: bun test:all
+      - name: Run tsc
+        run: bun tsc
 
       - name: Run lint
         run: bun lint
+
+      - name: Run tests
+        run: bun test:all

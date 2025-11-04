@@ -1,10 +1,12 @@
 import { env } from '@/commons/libs/env/env'
 import { messagesEn, messagesFr } from '@/commons/libs/translations/messages'
 import { t as baseT, init } from 'i18next'
-import type { Paths } from 'type-fest'
+import type { Paths, SharedUnionFieldsDeep } from 'type-fest'
+
+type Translations = SharedUnionFieldsDeep<typeof messagesFr | typeof messagesEn>
 
 export type TranslationKey = Paths<
-  typeof messagesFr & typeof messagesEn,
+  Translations,
   {
     leavesOnly: true
   }
