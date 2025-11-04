@@ -11,10 +11,10 @@ runs:
       uses: oven-sh/setup-bun@v1
   
     - name: "Install dependencies"
-      shell: zsh
+      shell: bash
       run: bun install
 
     - name: "Setup environment variables"
-      shell: zsh
+      shell: bash
       run: |
         cp .env.dist .env
