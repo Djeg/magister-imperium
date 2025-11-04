@@ -17,12 +17,18 @@ export function authSubscription({
     if (!session) return
 
     if (event === 'SIGNED_IN') {
-      const magister = await magisterQuery({
-        supabase,
-        userId: session.user.id,
-      })
+      try {
+        const magister = await magisterQuery({
+          supabase,
+          userId: session.user.id,
+        })
 
-      onLogin(magister)
+        onLogin(magister)
+      } catch (error) {
+        console.warn(
+          'Login manually, there is no magister for the given user id',
+        )
+      }
 
       return
     }

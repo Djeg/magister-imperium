@@ -33,7 +33,7 @@ export async function authQuery({ supabase }: SupabasePayload) {
     })
   }
 
-  const magister = await magisterQuery({ supabase, userId: data.user?.id })
+  const magister = await magisterQuery({ supabase, userId: data.user.id })
 
   return authSchema.parse({
     authenticated: true,

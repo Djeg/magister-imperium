@@ -1,24 +1,21 @@
+import { AuthActionsContext } from '@/commons/components/auth-provider/auth-provider'
 import { useSupabase } from '@/commons/hooks/use-supabase/use-supabase'
 import {
   type CreateMagitserMutationPayload,
   createMagisterMutation,
 } from '@/recruitment/mutations/create-magister-mutation/create-magister-mutation'
-import { newMagisterMutation } from '@/recruitment/mutations/new-magister-mutation/new-magister-mutation'
 import { useMutation } from '@tanstack/react-query'
+import { useContext } from 'react'
 
 export function useCreateMagisterMutation() {
   const supabase = useSupabase()
+  const { authenticate } = useContext(AuthActionsContext)
 
   return useMutation({
     mutationFn: async ({ newMagister }: CreateMagitserMutationPayload) => {
-      const user = await createMagisterMutation({ supabase, newMagister })
-      const magister = await newMagisterMutation({
-        supabase,
-        userId: user.id,
-        newMagister,
-      })
+      const magister = await createMagisterMutation({ supabase, newMagister })
 
-      return magister
+      authenticate(magister)
     },
   })
 }
