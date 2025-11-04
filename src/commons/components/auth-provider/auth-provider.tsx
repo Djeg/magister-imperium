@@ -101,7 +101,7 @@ export function AuthProvider({
   )
 }
 
-export type ConditionalAuthProps = PropsWithChildren<{}>
+export type ConditionalAuthProps = PropsWithChildren
 
 function ConditionalAuth({ children }: PropsWithChildren) {
   const $auth = useContext(AuthStateContext)

@@ -8,6 +8,7 @@ import type { Meta, StoryObj } from '@storybook/react-native'
 
 export default {
   title: 'commons/background',
+  // biome-ignore lint/suspicious/noExplicitAny: it's a trick to make modular props
   component: Background as any,
   decorators: [
     Story => (
