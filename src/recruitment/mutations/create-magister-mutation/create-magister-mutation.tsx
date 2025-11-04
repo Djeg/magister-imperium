@@ -15,20 +15,6 @@ export async function createMagisterMutation({
   supabase,
   newMagister,
 }: SupabasePayload<CreateMagisterMutationPayload>) {
-  const { data: magisterData, error: magisterError } = await supabase
-    .from('magisters')
-    .insert({
-      name: newMagister.name,
-    })
-    .select('id, name, user_id')
-    .single()
-
-  if (magisterError || !magisterData) {
-    failure(CreateMagisterMutationFailure, 'Failed to insert the magister', {
-      cause: magisterError,
-    })
-  }
-
   const { data: userData, error: userError } = await supabase.auth.signUp({
     email: newMagister.email,
     password: newMagister.password,
@@ -40,28 +26,23 @@ export async function createMagisterMutation({
     })
   }
 
-  const { data: updatedMagisterData, error: updatedMagisterError } =
-    await supabase
-      .from('magisters')
-      .update({
-        user_id: userData.user.id,
-      })
-      .eq('id', magisterData.id)
-      .select('id, name, user_id')
-      .single()
+  const { data: magisterData, error: magisterError } = await supabase
+    .from('magisters')
+    .insert({
+      name: newMagister.name,
+      user_id: userData.user.id,
+    })
+    .select('id, name, user_id')
+    .single()
 
-  if (updatedMagisterError || !updatedMagisterData) {
-    failure(
-      CreateMagisterMutationFailure,
-      'Failed to update the magister with the user id',
-      {
-        cause: updatedMagisterError,
-      },
-    )
+  if (magisterError || !magisterData) {
+    failure(CreateMagisterMutationFailure, 'Failed to insert the magister', {
+      cause: magisterError,
+    })
   }
 
   return magisterSchema.parse({
-    ...updatedMagisterData,
-    userId: updatedMagisterData.user_id,
+    ...magisterData,
+    userId: userData.user.id,
   })
 }

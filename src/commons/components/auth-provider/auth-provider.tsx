@@ -60,8 +60,10 @@ export function AuthProvider({
       magister,
     })
 
-    if ($auth.postAuthenticationRoute) {
-      router.push($auth.postAuthenticationRoute.peek())
+    const postAuthenticationRoute = $auth.postAuthenticationRoute.peek()
+
+    if (postAuthenticationRoute) {
+      router.push(postAuthenticationRoute)
     }
   }
 
