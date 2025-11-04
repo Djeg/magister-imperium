@@ -1,6 +1,6 @@
 import { useAuthQuery } from '@/commons/hooks/use-auth-query/use-auth-query'
 import { useAuthSubscription } from '@/commons/hooks/use-auth-subscription/use-auth-subscription'
-import type { Failure } from '@/commons/libs/failure/failure'
+import { type Failure, failure } from '@/commons/libs/failure/failure'
 import type { Action } from '@/commons/libs/react/react.action'
 import type { Magister } from '@/commons/schemas/magister-schema/magister-schema'
 import { type Observable, observable, opaqueObject } from '@legendapp/state'
@@ -60,8 +60,10 @@ export function AuthProvider({
       magister,
     })
 
-    if ($auth.postAuthenticationRoute) {
-      router.push($auth.postAuthenticationRoute.peek())
+    const postAuthenticationRoute = $auth.postAuthenticationRoute.peek()
+
+    if (postAuthenticationRoute) {
+      router.push(postAuthenticationRoute)
     }
   }
 
@@ -127,4 +129,27 @@ function AuthQuery({ children }: PropsWithChildren) {
   }, [auth, authenticate, setFailure])
 
   return children
+}
+
+export class AuthProviderFailure extends failure.named(
+  'commons/components/auth-provider',
+) {}
+
+export function useAuthActions() {
+  const actions = useContext(AuthActionsContext)
+
+  if (!actions) {
+    failure(
+      AuthProviderFailure,
+      `
+      Auth actions context not found in the tree.
+
+      Here are some clues to help you:
+      - Your are missing a <AuthProvider> component in your tree.
+      - Your are using the useAuthActions hook outside of a <AuthProvider> component.
+    `,
+    )
+  }
+
+  return actions
 }

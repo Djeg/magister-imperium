@@ -1,5 +1,5 @@
 import { t } from '@/commons/libs/translations/translations'
-import { useCreateMagisterMutation } from '@/recruitment/hooks/use-create-magister-mutation/use-create-magister-mutation'
+import { useCreateMagisterMutation } from '@/recruitment/mutations/create-magister-mutation/use-create-magister-mutation'
 import type { NewMagister } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 import { useObservable } from '@legendapp/state/react'
 
