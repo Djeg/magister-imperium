@@ -16,6 +16,7 @@ export function useCreateMagisterMutation() {
       const magister = await createMagisterMutation({ supabase, newMagister })
 
       authenticate(magister)
+      console.warn(`Magister ${magister.name} created and authenticated`)
     },
   })
 }

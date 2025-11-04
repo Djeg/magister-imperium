@@ -65,7 +65,6 @@ export function MagisterLoginPage({
                     label={t('recruitment.MagisterLoginPage.email.label')}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -87,7 +86,6 @@ export function MagisterLoginPage({
                     )}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}

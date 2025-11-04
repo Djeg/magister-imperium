@@ -63,7 +63,6 @@ export function MagisterCreationPage({
                     label={t('recruitment.MagisterCreationPage.name.label')}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -85,7 +84,6 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -107,7 +105,6 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -132,7 +129,6 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
-                      id={field.name}
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
