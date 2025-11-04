@@ -32,7 +32,6 @@ const annotations = [
 
 global.STORIES = normalizedStories
 
-// @ts-expect-error
 module?.hot?.accept?.()
 
 if (!global.view) {

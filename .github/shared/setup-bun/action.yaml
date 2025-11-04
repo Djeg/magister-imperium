@@ -1,0 +1,17 @@
+name: "Setup bun environment"
+description: "Setup bun environment to run the project CI"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Setup bun"
+      uses: oven-sh/setup-bun@v1
+  
+    - name: "Install dependencies"
+      shell: bash
+      run: bun install
+
+    - name: "Setup environment variables"
+      shell: bash
+      run: |
+        cp .env.dist .env
