@@ -6,7 +6,7 @@ import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Action } from '@/commons/libs/react/react.action'
 import { t } from '@/commons/libs/translations/translations'
 import { useMagisterCreationForm } from '@/recruitment/hooks/use-magister-creation-form/use-magister-creation-form'
-import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
+import type { NewMagister } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { type Observable, observable } from '@legendapp/state'
 import { Computed } from '@legendapp/state/react'
@@ -14,7 +14,7 @@ import { StatusBar } from 'react-native'
 import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterCreationPageProps = {
-  onSign: Action<MagisterCreation>
+  onSign: Action<NewMagister>
   $errors?: Observable<string[]>
 }
 

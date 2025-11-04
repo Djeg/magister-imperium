@@ -18,8 +18,8 @@ export async function magisterQuery({
 }: SupabasePayload<MagisterQueryPayload>) {
   const { data, error } = await supabase
     .from('magisters')
-    .select('id, userId, name')
-    .eq('userId', userId)
+    .select('id, user_id, name')
+    .eq('user_id', userId)
     .single()
 
   if (error) {

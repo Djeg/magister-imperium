@@ -76,7 +76,7 @@ export const recruitmentMessagesEn = {
     title: 'Join your colony',
   },
 
-  magisterCreationSchema: {
+  newMagisterSchema: {
     passwordMismatch: 'The passwords mismatch',
   },
 }
@@ -159,7 +159,7 @@ export const recruitmentMessagesFr = {
     title: 'Engagez-vous !',
   },
 
-  magisterCreationSchema: {
+  newMagisterSchema: {
     passwordMismatch: 'Les mots de passe ne correspondent pas',
   },
 }
