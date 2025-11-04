@@ -1,12 +1,12 @@
 import { failure } from '@/commons/libs/failure/failure'
 import type { SupabaseClient } from '@/commons/libs/supabase/supabase'
 import { magisterSchema } from '@/commons/schemas/magister-schema/magister-schema'
-import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
+import type { NewMagister } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 
 export type NewMagisterMutationPayload = {
   supabase: SupabaseClient
   userId: string
-  newMagister: MagisterCreation
+  newMagister: NewMagister
 }
 
 export class NewMagisterMutationFailure extends failure.named(

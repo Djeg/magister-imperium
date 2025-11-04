@@ -1,26 +1,26 @@
 import { failure } from '@/commons/libs/failure/failure'
 import type { SupabasePayload } from '@/commons/libs/supabase/supabase'
-import type { MagisterCreation } from '@/recruitment/schemas/magister-creation-schema/magister-creation-schema'
+import type { NewMagister } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 
-export type SignUpMutationPayload = {
-  newMagister: MagisterCreation
+export type CreateMagitserMutationPayload = {
+  newMagister: NewMagister
 }
 
-export class SignUpMutationFailure extends failure.named(
+export class CreateMagisterMutationFailure extends failure.named(
   'recruitment/mutations/sign-up-mutation',
 ) {}
 
-export async function signUpMutation({
+export async function createMagisterMutation({
   supabase,
   newMagister,
-}: SupabasePayload<SignUpMutationPayload>) {
+}: SupabasePayload<CreateMagitserMutationPayload>) {
   const { data, error } = await supabase.auth.signUp({
     email: newMagister.email,
     password: newMagister.password,
   })
 
   if (error || !data.user) {
-    failure(SignUpMutationFailure, 'Failed to sign up a new magister', {
+    failure(CreateMagisterMutationFailure, 'Failed to sign up a new magister', {
       cause: error,
     })
   }

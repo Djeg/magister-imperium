@@ -1,8 +1,8 @@
-import { magisterCreationSchema } from './magister-creation-schema'
+import { newMagisterSchema } from './new-magister-schema'
 
 describe('magisterCreationSchema', () => {
   it('should be valid', () => {
-    const magisterCreation = magisterCreationSchema.parse({
+    const magisterCreation = newMagisterSchema.parse({
       name: 'John Doe',
       email: 'john.doe@example.com',
       password: 'Password123!',
@@ -21,7 +21,7 @@ describe('magisterCreationSchema', () => {
 
   it('should be invalid with a password mismatch', () => {
     expect(() =>
-      magisterCreationSchema.parse({
+      newMagisterSchema.parse({
         name: 'John Doe',
         email: 'john.doe@example.com',
         password: 'Password123!',
