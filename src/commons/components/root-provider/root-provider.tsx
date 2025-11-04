@@ -1,6 +1,7 @@
 import { AuthProvider } from '@/commons/components/auth-provider/auth-provider'
 import { FontProvider } from '@/commons/components/font-provider/font-provider'
 import { GlobalErrorBoundary } from '@/commons/components/global-error-boundary/global-error-boundary'
+import { SourcesProvider } from '@/commons/components/sources-provider/sources-provider'
 import { SplashScreenSuspense } from '@/commons/components/splash-screen-suspense/splash-screen-suspense'
 import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
 import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-provider'
@@ -21,11 +22,13 @@ export function RootProvider({ children }: RootProviderProps) {
             <GlobalErrorBoundary>
               <SupabaseProvider>
                 <TranslationsProvider>
-                  <AuthProvider>
-                    <SplashScreenSuspense.Ending>
-                      {children}
-                    </SplashScreenSuspense.Ending>
-                  </AuthProvider>
+                  <SourcesProvider>
+                    <AuthProvider>
+                      <SplashScreenSuspense.Ending>
+                        {children}
+                      </SplashScreenSuspense.Ending>
+                    </AuthProvider>
+                  </SourcesProvider>
                 </TranslationsProvider>
               </SupabaseProvider>
             </GlobalErrorBoundary>
