@@ -8,7 +8,14 @@ export type MagisterCreationState = {
 }
 
 export function useMagisterCreationStore() {
-  const mutationSignUp = useCreateMagisterMutation()
+  const mutationSignUp = useCreateMagisterMutation({
+    onSuccess: magister => {
+      console.warn(
+        `Next feature ${magister.name} is coming soon ... stay tuned!`,
+      )
+    },
+  })
+
   const $ = useObservable<MagisterCreationState>({
     errors: [],
   })
@@ -18,8 +25,8 @@ export function useMagisterCreationStore() {
 
     try {
       await mutationSignUp.mutateAsync({ newMagister })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_: unknown) {
-      console.error(_)
       $.errors.set([t('recruitment.useMagisterCreationStore.errors.signUp')])
     }
   }

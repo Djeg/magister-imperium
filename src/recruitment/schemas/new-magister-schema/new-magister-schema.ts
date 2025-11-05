@@ -17,3 +17,5 @@ export const newMagisterSchema = z
   })
 
 export type NewMagister = z.infer<typeof newMagisterSchema>
+
+export type NewMagisterInput = z.infer<typeof newMagisterSchema>

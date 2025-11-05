@@ -1,22 +1,73 @@
-import { AuthActionsContext } from '@/commons/components/auth-provider/auth-provider'
 import { useSupabase } from '@/commons/hooks/use-supabase/use-supabase'
+import { failure } from '@/commons/libs/failure/failure'
+import type { Action } from '@/commons/libs/react/react.action'
 import {
-  type CreateMagisterMutationPayload,
-  createMagisterMutation,
-} from '@/recruitment/mutations/create-magister-mutation/create-magister-mutation'
+  type Magister,
+  magisterSchema,
+} from '@/commons/schemas/magister-schema/magister-schema'
+import type { NewMagister } from '@/recruitment/schemas/new-magister-schema/new-magister-schema'
 import { useMutation } from '@tanstack/react-query'
-import { useContext } from 'react'
 
-export function useCreateMagisterMutation() {
+export type CreateMagisterMutationPayload = {
+  newMagister: NewMagister
+}
+
+export class CreateMagisterMutationFailure extends failure.named(
+  'recruitment/hooks/use-create-magister-mutation',
+) {}
+
+export type UseCreateMagisterMutationPayload = {
+  onSuccess: Action<Magister>
+}
+
+export function useCreateMagisterMutation({
+  onSuccess,
+}: UseCreateMagisterMutationPayload) {
   const supabase = useSupabase()
-  const { authenticate } = useContext(AuthActionsContext)
 
   return useMutation({
     mutationFn: async ({ newMagister }: CreateMagisterMutationPayload) => {
-      const magister = await createMagisterMutation({ supabase, newMagister })
+      const { data: userData, error: userError } = await supabase.auth.signUp({
+        email: newMagister.email,
+        password: newMagister.password,
+      })
 
-      authenticate(magister)
-      console.warn(`Magister ${magister.name} created and authenticated`)
+      if (userError || !userData.user) {
+        failure(
+          CreateMagisterMutationFailure,
+          'Failed to sign up a new magister',
+          {
+            cause: userError,
+          },
+        )
+      }
+
+      const { data: magisterData, error: magisterError } = await supabase
+        .from('magisters')
+        .insert({
+          name: newMagister.name,
+          user_id: userData.user.id,
+        })
+        .select('id, name, user_id')
+        .single()
+
+      if (magisterError || !magisterData) {
+        failure(
+          CreateMagisterMutationFailure,
+          'Failed to insert the magister',
+          {
+            cause: magisterError,
+          },
+        )
+      }
+
+      const magister = magisterSchema.parse({
+        ...magisterData,
+        userId: magisterData.user_id,
+      })
+
+      return magister
     },
+    onSuccess,
   })
 }
