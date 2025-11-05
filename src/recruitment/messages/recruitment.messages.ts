@@ -6,13 +6,6 @@ export const recruitmentMessagesEn = {
     },
   },
 
-  useMagisterCreationStore: {
-    errors: {
-      signUp:
-        'An error occurred while signing up. Please retry in a moment, the imperium might be busy.',
-    },
-  },
-
   MagisterCallingPage: {
     magister: 'Magister',
     title: 'The Imperium is calling you!',
@@ -47,6 +40,10 @@ export const recruitmentMessagesEn = {
     confirmPassword: {
       label: 'Confirm password:',
       placeholder: 'Confirm your password',
+    },
+    errors: {
+      signature:
+        'An error occurred while signing up magister. Please retry in a moment, the imperium might be busy.',
     },
   },
 
@@ -89,13 +86,6 @@ export const recruitmentMessagesFr = {
     },
   },
 
-  useMagisterCreationStore: {
-    errors: {
-      signUp:
-        "Une erreur est survenue lors de la signature magister. Veuillez réessayer plus tard, l'Impérium peut être occupé.",
-    },
-  },
-
   MagisterCallingPage: {
     magister: 'Magister',
     title: "l'Impérium vous appelle !",
@@ -130,6 +120,10 @@ export const recruitmentMessagesFr = {
     confirmPassword: {
       label: 'Confirmer le mot de passe :',
       placeholder: 'Confirmez votre mot de passe',
+    },
+    errors: {
+      signature:
+        "Une erreur est survenue lors de la signature magister. Veuillez réessayer plus tard, l'Impérium peut être occupé.",
     },
   },
 
