@@ -39,10 +39,14 @@ export function MagisterCreationPage({
             />
             <YStack gap="$2" px="$2" py="$4">
               <Heading text="center" fontWeight="bold">
-                {t('recruitment.MagisterCreationPage.title')}
+                {t(
+                  'recruitment-magister-creation.components.MagisterCreationPage.title',
+                )}
               </Heading>
               <Text text="center">
-                {t('recruitment.MagisterCreationPage.description')}
+                {t(
+                  'recruitment-magister-creation.components.MagisterCreationPage.description',
+                )}
               </Text>
               <Computed>
                 {() =>
@@ -60,7 +64,9 @@ export function MagisterCreationPage({
               <Field name="name">
                 {field => (
                   <FormField
-                    label={t('recruitment.MagisterCreationPage.name.label')}
+                    label={t(
+                      'recruitment-magister-creation.components.MagisterCreationPage.name.label',
+                    )}
                   >
                     <FormField.Input
                       errored={field.state.meta.errors.length > 0}
@@ -69,7 +75,7 @@ export function MagisterCreationPage({
                       onChangeText={field.handleChange}
                       autoCapitalize="none"
                       placeholder={t(
-                        'recruitment.MagisterCreationPage.name.placeholder',
+                        'recruitment-magister-creation.components.MagisterCreationPage.name.placeholder',
                       )}
                     />
                   </FormField>
@@ -78,7 +84,9 @@ export function MagisterCreationPage({
               <Field name="email">
                 {field => (
                   <FormField
-                    label={t('recruitment.MagisterCreationPage.email.label')}
+                    label={t(
+                      'recruitment-magister-creation.components.MagisterCreationPage.email.label',
+                    )}
                     errors={field.state.meta.errors.map(
                       error => error?.message ?? '',
                     )}
@@ -90,7 +98,7 @@ export function MagisterCreationPage({
                       onChangeText={field.handleChange}
                       autoCapitalize="none"
                       placeholder={t(
-                        'recruitment.MagisterCreationPage.email.placeholder',
+                        'recruitment-magister-creation.components.MagisterCreationPage.email.placeholder',
                       )}
                     />
                   </FormField>
@@ -99,7 +107,9 @@ export function MagisterCreationPage({
               <Field name="password">
                 {field => (
                   <FormField
-                    label={t('recruitment.MagisterCreationPage.password.label')}
+                    label={t(
+                      'recruitment-magister-creation.components.MagisterCreationPage.password.label',
+                    )}
                     errors={field.state.meta.errors.map(
                       error => error?.message ?? '',
                     )}
@@ -112,7 +122,7 @@ export function MagisterCreationPage({
                       autoCapitalize="none"
                       secureTextEntry
                       placeholder={t(
-                        'recruitment.MagisterCreationPage.password.placeholder',
+                        'recruitment-magister-creation.components.MagisterCreationPage.password.placeholder',
                       )}
                     />
                   </FormField>
@@ -122,7 +132,7 @@ export function MagisterCreationPage({
                 {field => (
                   <FormField
                     label={t(
-                      'recruitment.MagisterCreationPage.confirmPassword.label',
+                      'recruitment-magister-creation.components.MagisterCreationPage.confirmPassword.label',
                     )}
                     errors={field.state.meta.errors.map(
                       error => error?.message ?? '',
@@ -134,7 +144,7 @@ export function MagisterCreationPage({
                       onBlur={field.handleBlur}
                       onChangeText={field.handleChange}
                       placeholder={t(
-                        'recruitment.MagisterCreationPage.confirmPassword.placeholder',
+                        'recruitment-magister-creation.components.MagisterCreationPage.confirmPassword.placeholder',
                       )}
                       autoCapitalize="none"
                       secureTextEntry
@@ -151,13 +161,17 @@ export function MagisterCreationPage({
               <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
                 {isSubmitting ? (
                   <Button.Label>
-                    {t('recruitment.MagisterCreationPage.btns.submitting')}
+                    {t(
+                      'recruitment-magister-creation.components.MagisterCreationPage.btns.submitting',
+                    )}
                   </Button.Label>
                 ) : (
                   <Button.Group>
                     <FontAwesome name="pencil" size={14} color="black" />
                     <Button.Label>
-                      {t('recruitment.MagisterCreationPage.btns.sign')}
+                      {t(
+                        'recruitment-magister-creation.components.MagisterCreationPage.btns.sign',
+                      )}
                     </Button.Label>
                   </Button.Group>
                 )}

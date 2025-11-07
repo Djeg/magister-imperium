@@ -28,7 +28,11 @@ export function MagisterCreationScreen() {
       await mutationSignUp.mutateAsync({ newMagister })
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_: unknown) {
-      $.errors.set([t('recruitment.MagisterCreationPage.errors.signature')])
+      $.errors.set([
+        t(
+          'recruitment-magister-creation.components.MagisterCreationScreen.signatureError',
+        ),
+      ])
     }
   }
 

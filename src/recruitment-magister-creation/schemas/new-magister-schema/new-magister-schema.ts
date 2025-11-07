@@ -12,7 +12,9 @@ export const newMagisterSchema = z
     confirmPassword: passwordSchema,
   })
   .refine(data => data.password === data.confirmPassword, {
-    message: t('recruitment.newMagisterSchema.passwordMismatch'),
+    message: t(
+      'recruitment-magister-creation.schemas.newMagisterSchema.passwordMismatch',
+    ),
     path: ['confirmPassword'],
   })
 
