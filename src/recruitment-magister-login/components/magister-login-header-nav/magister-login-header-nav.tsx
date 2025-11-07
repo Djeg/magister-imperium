@@ -21,7 +21,9 @@ export function MagisterLoginHeaderNav({
       </HeaderNav.Left>
       <HeaderNav.Middle>
         <Heading fontWeight="bold" text="center">
-          {t('recruitment.MagisterLoginHeaderNav.title')}
+          {t(
+            'recruitment-magister-login.components.MagisterLoginHeaderNav.title',
+          )}
         </Heading>
       </HeaderNav.Middle>
       <HeaderNav.Right>
