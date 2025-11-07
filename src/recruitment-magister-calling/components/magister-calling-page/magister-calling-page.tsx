@@ -41,7 +41,9 @@ export function MagisterCallingPage({
                     color="white"
                     text="center"
                   >
-                    {t('recruitment.MagisterCallingPage.magister')}
+                    {t(
+                      'recruitment-magister-calling.components.MagisterCallingPage.magister',
+                    )}
                   </Heading>
                   <Heading
                     size="$7"
@@ -49,11 +51,15 @@ export function MagisterCallingPage({
                     color="white"
                     text="center"
                   >
-                    {t('recruitment.MagisterCallingPage.title')}
+                    {t(
+                      'recruitment-magister-calling.components.MagisterCallingPage.title',
+                    )}
                   </Heading>
                 </YStack>
                 <Text color="white" text="center">
-                  {t('recruitment.MagisterCallingPage.description')}
+                  {t(
+                    'recruitment-magister-calling.components.MagisterCallingPage.description',
+                  )}
                 </Text>
               </YStack>
             </Papyrus>
@@ -61,10 +67,14 @@ export function MagisterCallingPage({
         </View>
         <HButtonStack justify="center" items="center">
           <Button frameProps={{ flex: 1 }} onPress={onSign}>
-            {t('recruitment.MagisterCallingPage.btns.sign')}
+            {t(
+              'recruitment-magister-calling.components.MagisterCallingPage.btns.sign',
+            )}
           </Button>
           <Button frameProps={{ flex: 1 }} onPress={onJoin}>
-            {t('recruitment.MagisterCallingPage.btns.join')}
+            {t(
+              'recruitment-magister-calling.components.MagisterCallingPage.btns.join',
+            )}
           </Button>
         </HButtonStack>
       </PageFrame.Centered>
