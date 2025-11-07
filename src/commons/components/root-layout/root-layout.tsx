@@ -1,6 +1,6 @@
 import { RootProvider } from '@/commons/components/root-provider/root-provider'
-import { MagisterCreationHeaderNav } from '@/recruitment/components/magister-creation-header-nav/magister-creation-header-nav'
-import { MagisterLoginHeaderNav } from '@/recruitment/components/magister-login-header-nav/magister-login-header-nav'
+import { MagisterCreationHeaderNav } from '@/recruitment-magister-creation/components/magister-creation-header-nav/magister-creation-header-nav'
+import { MagisterLoginHeaderNav } from '@/recruitment-magister-login/components/magister-login-header-nav/magister-login-header-nav'
 import { router, Stack } from 'expo-router'
 
 export function RootLayout() {
@@ -11,7 +11,10 @@ export function RootLayout() {
   return (
     <RootProvider>
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(recruitment)/index"
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="(recruitment)/magister-creation"
           options={{
