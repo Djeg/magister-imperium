@@ -20,7 +20,9 @@ export function useMagisterLoginStore() {
       await mutationMagisterLogin.mutateAsync({ credentials })
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_: unknown) {
-      $.errors.set([t('recruitment.useMagisterLoginStore.errors.login')])
+      $.errors.set([
+        t('recruitment-magister-login.hooks.useMagisterLoginStore.loginError'),
+      ])
     }
   }
 

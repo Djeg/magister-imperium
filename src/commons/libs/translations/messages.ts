@@ -14,14 +14,9 @@ import {
   recruitmentMagisterLoginMessagesEn,
   recruitmentMagisterLoginMessagesFr,
 } from '@/recruitment-magister-login/messages/recruitment-magister-login.messages'
-import {
-  recruitmentMessagesEn,
-  recruitmentMessagesFr,
-} from '@/recruitment/messages/recruitment.messages'
 
 export const messagesFr = {
   commons: commonsMessagesFr,
-  recruitment: recruitmentMessagesFr,
   'recruitment-magister-calling': recruitmentMagisterCallingMessagesFr,
   'recruitment-magister-creation': recruitmentMagisterCreationMessagesFr,
   'recruitment-magister-login': recruitmentMagisterLoginMessagesFr,
@@ -29,7 +24,6 @@ export const messagesFr = {
 
 export const messagesEn = {
   commons: commonsMessagesEn,
-  recruitment: recruitmentMessagesEn,
   'recruitment-magister-calling': recruitmentMagisterCallingMessagesEn,
   'recruitment-magister-creation': recruitmentMagisterCreationMessagesEn,
   'recruitment-magister-login': recruitmentMagisterLoginMessagesEn,
