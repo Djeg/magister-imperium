@@ -10,3 +10,8 @@ jest.mock('expo/src/winter/ImportMetaRegistry', () => ({
 if (typeof global.structuredClone === 'undefined') {
   global.structuredClone = object => JSON.parse(JSON.stringify(object))
 }
+
+beforeEach(() => {
+  jest.clearAllMocks()
+  jest.restoreAllMocks()
+})

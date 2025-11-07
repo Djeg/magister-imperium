@@ -12,10 +12,6 @@ export type CreateMagisterMutationPayload = {
   newMagister: NewMagister
 }
 
-export class CreateMagisterMutationFailure extends failure.named(
-  'recruitment/hooks/use-create-magister-mutation',
-) {}
-
 export type UseCreateMagisterMutationPayload = {
   onSuccess: Action<Magister>
 }
@@ -24,7 +20,6 @@ export function useCreateMagisterMutation({
   onSuccess,
 }: UseCreateMagisterMutationPayload) {
   const supabase = useSupabase()
-
   return useMutation({
     mutationFn: async ({ newMagister }: CreateMagisterMutationPayload) => {
       const { data: userData, error: userError } = await supabase.auth.signUp({
@@ -34,7 +29,7 @@ export function useCreateMagisterMutation({
 
       if (userError || !userData.user) {
         failure(
-          CreateMagisterMutationFailure,
+          MagisterMutationFailToSignUpFailure,
           'Failed to sign up a new magister',
           {
             cause: userError,
@@ -53,7 +48,7 @@ export function useCreateMagisterMutation({
 
       if (magisterError || !magisterData) {
         failure(
-          CreateMagisterMutationFailure,
+          MagisterMutationFailToInsertFailure,
           'Failed to insert the magister',
           {
             cause: magisterError,
@@ -61,13 +56,35 @@ export function useCreateMagisterMutation({
         )
       }
 
-      const magister = magisterSchema.parse({
+      const { error, data } = magisterSchema.safeParse({
         ...magisterData,
         userId: magisterData.user_id,
       })
 
-      return magister
+      if (error) {
+        failure(
+          MagisterMutationFailToParseDataFailure,
+          'Invalid magister data received',
+          {
+            cause: error,
+          },
+        )
+      }
+
+      return data
     },
     onSuccess,
   })
 }
+
+export class MagisterMutationFailToSignUpFailure extends failure.named(
+  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-sign-up-failure',
+) {}
+
+export class MagisterMutationFailToInsertFailure extends failure.named(
+  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-insert-failure',
+) {}
+
+export class MagisterMutationFailToParseDataFailure extends failure.named(
+  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-parse-magister-data-failure',
+) {}
