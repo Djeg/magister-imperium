@@ -1,12 +1,10 @@
-import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
 import {
   supabaseAuthMock,
   supabaseDataMock,
   supabaseFromMock,
   supabaseQueryBuilderMock,
 } from '@/commons/libs/supabase/__mocks__/supabase-mocks'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { renderHook } from '@testing-library/react-native'
+import { renderHookWithProviders } from '@/commons/libs/testing/render-with-provider'
 import {
   MagisterMutationFailToInsertFailure,
   MagisterMutationFailToParseDataFailure,
@@ -29,29 +27,8 @@ describe('useCreateMagisterMutation', () => {
       },
     })
 
-    const { result } = renderHook(
-      () => useCreateMagisterMutation({ onSuccess }),
-      {
-        wrapper: ({ children }) => (
-          <QueryClientProvider
-            client={
-              new QueryClient({
-                defaultOptions: {
-                  queries: {
-                    retry: false,
-                  },
-                  mutations: {
-                    retry: false,
-                    onSuccess: onSuccess,
-                  },
-                },
-              })
-            }
-          >
-            <SupabaseProvider>{children}</SupabaseProvider>
-          </QueryClientProvider>
-        ),
-      },
+    const { result } = renderHookWithProviders(() =>
+      useCreateMagisterMutation({ onSuccess }),
     )
 
     const data = await result.current.mutateAsync({
@@ -97,15 +74,8 @@ describe('useCreateMagisterMutation', () => {
       error: new Error('Failed to sign up'),
     })
 
-    const { result } = renderHook(
-      () => useCreateMagisterMutation({ onSuccess }),
-      {
-        wrapper: ({ children }) => (
-          <QueryClientProvider client={new QueryClient()}>
-            <SupabaseProvider>{children}</SupabaseProvider>
-          </QueryClientProvider>
-        ),
-      },
+    const { result } = renderHookWithProviders(() =>
+      useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
@@ -130,15 +100,8 @@ describe('useCreateMagisterMutation', () => {
       data: null,
     })
 
-    const { result } = renderHook(
-      () => useCreateMagisterMutation({ onSuccess }),
-      {
-        wrapper: ({ children }) => (
-          <QueryClientProvider client={new QueryClient()}>
-            <SupabaseProvider>{children}</SupabaseProvider>
-          </QueryClientProvider>
-        ),
-      },
+    const { result } = renderHookWithProviders(() =>
+      useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
@@ -163,15 +126,8 @@ describe('useCreateMagisterMutation', () => {
       data: { invalid: 'data' },
     })
 
-    const { result } = renderHook(
-      () => useCreateMagisterMutation({ onSuccess }),
-      {
-        wrapper: ({ children }) => (
-          <QueryClientProvider client={new QueryClient()}>
-            <SupabaseProvider>{children}</SupabaseProvider>
-          </QueryClientProvider>
-        ),
-      },
+    const { result } = renderHookWithProviders(() =>
+      useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
