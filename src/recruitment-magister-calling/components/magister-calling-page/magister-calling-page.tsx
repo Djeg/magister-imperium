@@ -20,13 +20,13 @@ export function MagisterCallingPage({
     <PageFrame>
       <StatusBar barStyle="dark-content" />
       <Background.CoverImage
-        source={require('@/assets/images/city-background.jpeg')}
+        source={require('@/recruitment-magister-calling/assets/images/city-background.jpeg')}
       />
       <PageFrame.Centered withHorizontalPadding>
         <View flex={1} justify="center" items="center">
           <View items="center">
             <Image
-              source={require('@/assets/images/imperium-coat-of-arms.white-shadowed.png')}
+              source={require('@/recruitment-magister-calling/assets/images/imperium-coat-of-arms.white-shadowed.png')}
               width={167}
               height={251}
             />
@@ -40,6 +40,7 @@ export function MagisterCallingPage({
                     fontWeight={800}
                     color="white"
                     text="center"
+                    testID="recruitment-magister-calling.MagisterCallingPage.title"
                   >
                     {t(
                       'recruitment-magister-calling.components.MagisterCallingPage.magister',
@@ -66,12 +67,20 @@ export function MagisterCallingPage({
           </DecoratedFrame>
         </View>
         <HButtonStack justify="center" items="center">
-          <Button frameProps={{ flex: 1 }} onPress={onSign}>
+          <Button
+            frameProps={{ flex: 1 }}
+            onPress={onSign}
+            testID="recruitment-magister-calling.MagisterCallingPage.btns.sign"
+          >
             {t(
               'recruitment-magister-calling.components.MagisterCallingPage.btns.sign',
             )}
           </Button>
-          <Button frameProps={{ flex: 1 }} onPress={onJoin}>
+          <Button
+            frameProps={{ flex: 1 }}
+            onPress={onJoin}
+            testID="recruitment-magister-calling.MagisterCallingPage.btns.join"
+          >
             {t(
               'recruitment-magister-calling.components.MagisterCallingPage.btns.join',
             )}
