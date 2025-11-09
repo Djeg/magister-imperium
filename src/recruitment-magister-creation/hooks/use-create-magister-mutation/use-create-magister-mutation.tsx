@@ -78,13 +78,13 @@ export function useCreateMagisterMutation({
 }
 
 export class MagisterMutationFailToSignUpFailure extends failure.named(
-  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-sign-up-failure',
+  'recruitment-magister-creation/hooks/use-create-magister-mutation/magister-mutation-fail-to-sign-up-failure',
 ) {}
 
 export class MagisterMutationFailToInsertFailure extends failure.named(
-  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-insert-failure',
+  'recruitment-magister-creation/hooks/use-create-magister-mutation/magister-mutation-fail-to-insert-failure',
 ) {}
 
 export class MagisterMutationFailToParseDataFailure extends failure.named(
-  'recruitment/hooks/use-create-magister-mutation/magister-mutation-fail-to-parse-magister-data-failure',
+  'recruitment-magister-creation/hooks/use-create-magister-mutation/magister-mutation-fail-to-parse-magister-data-failure',
 ) {}
