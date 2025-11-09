@@ -35,3 +35,8 @@ export function configureI18next() {
 }
 
 export const t = translate
+
+export type Translatable = {
+  id: TranslationKey
+  values?: Record<string, string>
+}

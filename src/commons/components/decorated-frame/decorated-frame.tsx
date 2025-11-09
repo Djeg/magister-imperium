@@ -41,7 +41,7 @@ export function DecoratedFrame({
             width={sizeInPixels}
             height="100%"
             z={-10}
-            source={require('@/assets/images/button-frame.left.png')}
+            source={require('@/commons/assets/images/button-frame.left.png')}
             resizeMode="stretch"
           />
         ) : null}
@@ -50,7 +50,7 @@ export function DecoratedFrame({
             position="absolute"
             r={0}
             z={-10}
-            source={require('@/assets/images/button-frame.right.png')}
+            source={require('@/commons/assets/images/button-frame.right.png')}
             width={sizeInPixels}
             height="100%"
             resizeMode="stretch"
@@ -60,7 +60,7 @@ export function DecoratedFrame({
           <Image
             position="absolute"
             z={-10}
-            source={require('@/assets/images/button-frame.top.png')}
+            source={require('@/commons/assets/images/button-frame.top.png')}
             width="100%"
             height={sizeInPixels}
             resizeMode="stretch"
@@ -71,7 +71,7 @@ export function DecoratedFrame({
             position="absolute"
             b={0}
             z={-10}
-            source={require('@/assets/images/button-frame.bottom.png')}
+            source={require('@/commons/assets/images/button-frame.bottom.png')}
             width="100%"
             height={sizeInPixels}
             resizeMode="stretch"
