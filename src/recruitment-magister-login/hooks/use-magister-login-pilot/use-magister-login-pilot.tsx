@@ -1,4 +1,4 @@
-import { type Translatable } from '@/commons/libs/translations/translations'
+import type { Translatable } from '@/commons/libs/translations/translations'
 import type { MagisterCredentials } from '@/recruitment-magister-login/schemas/magister-credentials-schema/magister-credentials-schema'
 import { useObservable } from '@legendapp/state/react'
 import { useMagisterLoginMutation } from '../use-magister-login-mutation/use-magister-login-mutation'
@@ -18,7 +18,7 @@ export function useMagisterLoginPilot() {
 
     try {
       await magisterLoginMutation.mutateAsync({ credentials })
-      // eslint-disable-next-line
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_: unknown) {
       $.errors.set([
         {
