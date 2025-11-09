@@ -26,9 +26,6 @@ export const recruitmentMagisterLoginMessagesEn = {
     useMagisterLoginPilot: {
       loginError: 'The imperium is too busy, please try again later.',
     },
-    useMagisterLoginStore: {
-      loginError: 'The imperium is too busy, please try again later.',
-    },
   },
 }
 
@@ -60,10 +57,6 @@ export const recruitmentMagisterLoginMessagesFr = {
     useMagisterLoginPilot: {
       loginError:
         "L'Impérium ne vous reconnaît pas mon magister. Je suis sur que ce n'est qu'un quiproquo. Veuillez-réessayer",
-    },
-    useMagisterLoginStore: {
-      loginError:
-        "L'imperium ne vous reconnais pas mon magister. Je suis sur que ce n'est qu'un quiproquo. Veuillez-réessayer",
     },
   },
 }
