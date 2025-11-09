@@ -5,6 +5,9 @@ export const supabaseUserMock = {
 
 export const supabaseAuthMock = {
   signUp: jest.fn().mockResolvedValue({ data: { user: supabaseUserMock } }),
+  signInWithPassword: jest
+    .fn()
+    .mockResolvedValue({ data: { user: supabaseUserMock } }),
 }
 
 export const supabaseDataMock = {
