@@ -4,7 +4,7 @@ import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-f
 import { FormField } from '@/commons/components/form-field/form-field'
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Action } from '@/commons/libs/react/react.action'
-import { t } from '@/commons/libs/translations/translations'
+import { type Translatable, t } from '@/commons/libs/translations/translations'
 import { useMagisterLoginForm } from '@/recruitment-magister-login/hooks/use-magister-login-form/use-magister-login-form'
 import type { MagisterCredentials } from '@/recruitment-magister-login/schemas/magister-credentials-schema/magister-credentials-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
@@ -15,7 +15,7 @@ import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterLoginPageProps = {
   onSubmit: Action<MagisterCredentials>
-  $errors?: Observable<string[]>
+  $errors?: Observable<Translatable[]>
 }
 
 export function MagisterLoginPage({
@@ -30,7 +30,7 @@ export function MagisterLoginPage({
     <PageFrame edges={['bottom']}>
       <StatusBar barStyle="dark-content" />
       <Background.CoverImage
-        source={require('@/assets/images/magister-login.jpeg')}
+        source={require('@/recruitment-magister-login/assets/images/magister-login.jpeg')}
       />
       <PageFrame.Centered withHorizontalPadding>
         <ScrollView contentContainerStyle={{ flex: 1, justify: 'center' }}>
@@ -40,7 +40,11 @@ export function MagisterLoginPage({
               bg="rgba(255, 255, 255, 0.8)"
             />
             <YStack gap="$2" px="$2" py="$4">
-              <Heading text="center" fontWeight="bold">
+              <Heading
+                text="center"
+                fontWeight="bold"
+                testID="recruitment-magister-login.MagisterLoginPage.title"
+              >
                 {t(
                   'recruitment-magister-login.components.MagisterLoginPage.title',
                 )}
@@ -55,8 +59,12 @@ export function MagisterLoginPage({
                   $errors.get().length ? (
                     <FormField.ErrorList>
                       {$errors.get().map(error => (
-                        <FormField.ErrorMessage key={error} text="center">
-                          {error}
+                        <FormField.ErrorMessage
+                          key={error.id}
+                          text="center"
+                          testID={error.id}
+                        >
+                          {t(error.id, error.values)}
                         </FormField.ErrorMessage>
                       ))}
                     </FormField.ErrorList>
@@ -71,6 +79,7 @@ export function MagisterLoginPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitment-magister-login.MagisterLoginPage.email"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -94,6 +103,7 @@ export function MagisterLoginPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitment-magister-login.MagisterLoginPage.password"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -113,7 +123,12 @@ export function MagisterLoginPage({
         <Button.Horizontal>
           <Subscribe selector={state => [state.canSubmit, state.isSubmitting]}>
             {([canSubmit, isSubmitting]) => (
-              <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
+              <Button
+                stretch
+                onPress={handleSubmit}
+                disabled={!canSubmit}
+                testID="recruitment-magister-login.MagisterLoginPage.btns.login"
+              >
                 {isSubmitting ? (
                   <Button.Label>
                     {t(

@@ -23,7 +23,7 @@ export const recruitmentMagisterLoginMessagesEn = {
   },
 
   hooks: {
-    useMagisterLoginStore: {
+    useMagisterLoginPilot: {
       loginError: 'The imperium is too busy, please try again later.',
     },
   },
@@ -54,9 +54,9 @@ export const recruitmentMagisterLoginMessagesFr = {
   },
 
   hooks: {
-    useMagisterLoginStore: {
+    useMagisterLoginPilot: {
       loginError:
-        "L'imperium ne vous reconnais pas mon magister. Je suis sur que ce n'est qu'un quiproquo. Veuillez-réessayer",
+        "L'Impérium ne vous reconnaît pas mon magister. Je suis sur que ce n'est qu'un quiproquo. Veuillez-réessayer",
     },
   },
 }
