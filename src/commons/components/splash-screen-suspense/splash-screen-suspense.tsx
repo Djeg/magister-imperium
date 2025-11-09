@@ -9,7 +9,15 @@ export type SplashScreenSuspenseProps = {
 }
 
 export function SplashScreenSuspense({ children }: SplashScreenSuspenseProps) {
-  return <Suspense fallback={<Text>Loading...</Text>}>{children}</Suspense>
+  return (
+    <Suspense
+      fallback={
+        <Text testID="commons.SplashScreenSuspense.loading">Loading...</Text>
+      }
+    >
+      {children}
+    </Suspense>
+  )
 }
 
 export type SplashEndingProps = {

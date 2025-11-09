@@ -1,3 +1,5 @@
+import { cleanup } from '@testing-library/react-native'
+
 // https://github.com/expo/expo/issues/36831#issuecomment-3107047371
 jest.mock('expo/src/winter/ImportMetaRegistry', () => ({
   ImportMetaRegistry: {
@@ -14,4 +16,8 @@ if (typeof global.structuredClone === 'undefined') {
 beforeEach(() => {
   jest.clearAllMocks()
   jest.restoreAllMocks()
+})
+
+afterEach(() => {
+  cleanup()
 })

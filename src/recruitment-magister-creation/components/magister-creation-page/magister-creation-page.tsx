@@ -4,7 +4,7 @@ import { DecoratedFrame } from '@/commons/components/decorated-frame/decorated-f
 import { FormField } from '@/commons/components/form-field/form-field'
 import { PageFrame } from '@/commons/components/page-frame/page-frame'
 import type { Action } from '@/commons/libs/react/react.action'
-import { t } from '@/commons/libs/translations/translations'
+import { type Translatable, t } from '@/commons/libs/translations/translations'
 import { useMagisterCreationForm } from '@/recruitment-magister-creation/hooks/use-magister-creation-form/use-magister-creation-form'
 import type { NewMagister } from '@/recruitment-magister-creation/schemas/new-magister-schema/new-magister-schema'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
@@ -15,7 +15,7 @@ import { Heading, ScrollView, Text, YStack } from 'tamagui'
 
 export type MagisterCreationPageProps = {
   onSign: Action<NewMagister>
-  $errors?: Observable<string[]>
+  $errors?: Observable<Translatable[]>
 }
 
 export function MagisterCreationPage({
@@ -28,7 +28,7 @@ export function MagisterCreationPage({
     <PageFrame edges={['bottom']}>
       <StatusBar barStyle="dark-content" />
       <Background.CoverImage
-        source={require('@/assets/images/magister-creation.jpeg')}
+        source={require('@/recruitment-magister-creation/assets/images/magister-creation.jpeg')}
       />
       <PageFrame.Centered withHorizontalPadding>
         <ScrollView contentContainerStyle={{ flex: 1, justify: 'center' }}>
@@ -38,7 +38,11 @@ export function MagisterCreationPage({
               bg="rgba(255, 255, 255, 0.8)"
             />
             <YStack gap="$2" px="$2" py="$4">
-              <Heading text="center" fontWeight="bold">
+              <Heading
+                text="center"
+                fontWeight="bold"
+                testID="recruitmentMagisterCreation.MagisterCreationPage.title"
+              >
                 {t(
                   'recruitment-magister-creation.components.MagisterCreationPage.title',
                 )}
@@ -53,8 +57,12 @@ export function MagisterCreationPage({
                   $errors.get().length ? (
                     <FormField.ErrorList>
                       {$errors.get().map(error => (
-                        <FormField.ErrorMessage key={error} text="center">
-                          {error}
+                        <FormField.ErrorMessage
+                          key={error.id}
+                          text="center"
+                          testID={error.id}
+                        >
+                          {t(error.id, error.values)}
                         </FormField.ErrorMessage>
                       ))}
                     </FormField.ErrorList>
@@ -69,6 +77,7 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitmentMagisterCreation.MagisterCreationPage.name"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -92,6 +101,7 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitmentMagisterCreation.MagisterCreationPage.email"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -115,6 +125,7 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitmentMagisterCreation.MagisterCreationPage.password"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -139,6 +150,7 @@ export function MagisterCreationPage({
                     )}
                   >
                     <FormField.Input
+                      testID="recruitmentMagisterCreation.MagisterCreationPage.confirmPassword"
                       errored={field.state.meta.errors.length > 0}
                       value={field.state.value}
                       onBlur={field.handleBlur}
@@ -158,7 +170,12 @@ export function MagisterCreationPage({
         <Button.Horizontal>
           <Subscribe selector={state => [state.canSubmit, state.isSubmitting]}>
             {([canSubmit, isSubmitting]) => (
-              <Button stretch onPress={handleSubmit} disabled={!canSubmit}>
+              <Button
+                stretch
+                onPress={handleSubmit}
+                disabled={!canSubmit}
+                testID="recruitmentMagisterCreation.MagisterCreationPage.btns.submit"
+              >
                 {isSubmitting ? (
                   <Button.Label>
                     {t(

@@ -23,7 +23,7 @@ export function useMagisterCreationForm({
       onSubmit: newMagisterSchema,
     },
     onSubmit: ({ value }) => {
-      return onSign(newMagisterSchema.parse(value))
+      return onSign(value)
     },
   })
 }

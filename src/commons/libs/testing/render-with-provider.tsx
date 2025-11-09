@@ -1,4 +1,6 @@
 import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
+import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-provider'
+import { configureI18next } from '@/commons/libs/translations/translations'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   type RenderHookOptions,
@@ -8,20 +10,26 @@ import {
 } from '@testing-library/react-native'
 import type { PropsWithChildren } from 'react'
 
-export function renderWithProviders(
+jest.mock('@/commons/libs/supabase/supabase')
+
+export async function renderWithProviders(
   ui: React.ReactElement,
   options?: RenderOptions,
 ) {
+  await configureI18next()
+
   return render(ui, {
     wrapper: TestingProviders,
     ...options,
   })
 }
 
-export function renderHookWithProviders<T>(
+export async function renderHookWithProviders<T>(
   hook: () => T,
   options?: RenderHookOptions<T>,
 ) {
+  await configureI18next()
+
   return renderHook(hook, {
     wrapper: TestingProviders,
     ...options,
@@ -30,21 +38,23 @@ export function renderHookWithProviders<T>(
 
 export function TestingProviders({ children }: PropsWithChildren) {
   return (
-    <QueryClientProvider
-      client={
-        new QueryClient({
-          defaultOptions: {
-            queries: {
-              retry: false,
+    <TamaguiProvider>
+      <QueryClientProvider
+        client={
+          new QueryClient({
+            defaultOptions: {
+              queries: {
+                retry: false,
+              },
+              mutations: {
+                retry: false,
+              },
             },
-            mutations: {
-              retry: false,
-            },
-          },
-        })
-      }
-    >
-      <SupabaseProvider>{children}</SupabaseProvider>
-    </QueryClientProvider>
+          })
+        }
+      >
+        <SupabaseProvider>{children}</SupabaseProvider>
+      </QueryClientProvider>
+    </TamaguiProvider>
   )
 }

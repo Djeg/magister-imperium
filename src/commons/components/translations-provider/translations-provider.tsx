@@ -11,7 +11,7 @@ export function TranslationsProvider({ children }: TranslationsProviderProps) {
   return children
 }
 
-let i18nCache: Awaited<ReturnType<typeof configureI18next>> | null = null
+export let i18nCache: Awaited<ReturnType<typeof configureI18next>> | null = null
 
 function useConfigureI18next() {
   if (i18nCache) return i18nCache

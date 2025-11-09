@@ -3,8 +3,9 @@ import {
   supabaseDataMock,
   supabaseFromMock,
   supabaseQueryBuilderMock,
-} from '@/commons/libs/supabase/__mocks__/supabase-mocks'
+} from '@/commons/libs/supabase/__mocks__/supabase.mocks'
 import { renderHookWithProviders } from '@/commons/libs/testing/render-with-provider'
+import { newMagisterMock } from '@/recruitment-magister-creation/schemas/new-magister-schema/__mocks__/new-magister-schema-mocks'
 import {
   MagisterMutationFailToInsertFailure,
   MagisterMutationFailToParseDataFailure,
@@ -27,17 +28,12 @@ describe('useCreateMagisterMutation', () => {
       },
     })
 
-    const { result } = renderHookWithProviders(() =>
+    const { result } = await renderHookWithProviders(() =>
       useCreateMagisterMutation({ onSuccess }),
     )
 
     const data = await result.current.mutateAsync({
-      newMagister: {
-        email: 'test@mail.com',
-        password: 'Password123!',
-        confirmPassword: 'Password123!',
-        name: 'Test Magister',
-      },
+      newMagister: newMagisterMock,
     })
 
     expect(data).toMatchInlineSnapshot(`
@@ -74,18 +70,13 @@ describe('useCreateMagisterMutation', () => {
       error: new Error('Failed to sign up'),
     })
 
-    const { result } = renderHookWithProviders(() =>
+    const { result } = await renderHookWithProviders(() =>
       useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
       result.current.mutateAsync({
-        newMagister: {
-          email: 'test@mail.com',
-          password: 'Password123!',
-          confirmPassword: 'Password123!',
-          name: 'Test Magister',
-        },
+        newMagister: newMagisterMock,
       }),
     ).rejects.toThrow(MagisterMutationFailToSignUpFailure)
 
@@ -100,18 +91,13 @@ describe('useCreateMagisterMutation', () => {
       data: null,
     })
 
-    const { result } = renderHookWithProviders(() =>
+    const { result } = await renderHookWithProviders(() =>
       useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
       result.current.mutateAsync({
-        newMagister: {
-          email: 'test@mail.com',
-          password: 'Password123!',
-          confirmPassword: 'Password123!',
-          name: 'Test Magister',
-        },
+        newMagister: newMagisterMock,
       }),
     ).rejects.toThrow(MagisterMutationFailToInsertFailure)
 
@@ -126,18 +112,13 @@ describe('useCreateMagisterMutation', () => {
       data: { invalid: 'data' },
     })
 
-    const { result } = renderHookWithProviders(() =>
+    const { result } = await renderHookWithProviders(() =>
       useCreateMagisterMutation({ onSuccess }),
     )
 
     await expect(
       result.current.mutateAsync({
-        newMagister: {
-          email: 'test@mail.com',
-          password: 'Password123!',
-          confirmPassword: 'Password123!',
-          name: 'Test Magister',
-        },
+        newMagister: newMagisterMock,
       }),
     ).rejects.toThrow(MagisterMutationFailToParseDataFailure)
   })
