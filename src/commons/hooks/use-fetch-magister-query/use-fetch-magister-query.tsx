@@ -31,7 +31,10 @@ export function useFetchMagisterQuery() {
           )
         }
 
-        return magisterSchema.parse(data)
+        return magisterSchema.parse({
+          ...data,
+          userId: data.user_id,
+        })
       },
     })
   }

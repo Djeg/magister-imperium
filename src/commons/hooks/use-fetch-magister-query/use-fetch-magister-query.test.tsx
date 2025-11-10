@@ -14,7 +14,11 @@ describe('useFetchMagisterQuery', () => {
 
     supabaseDataMock.set({
       error: null,
-      data: magister,
+      data: {
+        id: '1',
+        user_id: '1',
+        name: 'John Doe',
+      },
     })
 
     const { result } = await renderHookWithProviders(() =>
