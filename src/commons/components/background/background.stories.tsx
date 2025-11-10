@@ -32,7 +32,7 @@ type Story = StoryObj<
 export const BackgroundWithCoverImageStory: Story = {
   render: (props: BackgroundWithCoverImageProps) => (
     <Background.CoverImage
-      source={require('@/assets/images/city-background.jpeg')}
+      source={require('@/commons/assets/images/city-background.jpeg')}
       {...props}
     />
   ),

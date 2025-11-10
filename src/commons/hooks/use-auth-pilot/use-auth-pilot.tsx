@@ -37,3 +37,5 @@ export function useAuthPilot() {
 
   return { $, login, logout, fail }
 }
+
+export type AuthPilot = ReturnType<typeof useAuthPilot>

@@ -1,3 +1,4 @@
+import { AuthPilotProvider } from '@/commons/components/auth-pilot-provider/auth-pilot-provider'
 import { SupabaseProvider } from '@/commons/components/supabase-provider/supabase-provider'
 import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-provider'
 import { configureI18next } from '@/commons/libs/translations/translations'
@@ -11,6 +12,7 @@ import {
 import type { PropsWithChildren } from 'react'
 
 jest.mock('@/commons/libs/supabase/supabase')
+jest.mock('@/commons/components/auth-pilot-provider/auth-pilot-provider')
 
 export async function renderWithProviders(
   ui: React.ReactElement,
@@ -53,7 +55,9 @@ export function TestingProviders({ children }: PropsWithChildren) {
           })
         }
       >
-        <SupabaseProvider>{children}</SupabaseProvider>
+        <SupabaseProvider>
+          <AuthPilotProvider>{children}</AuthPilotProvider>
+        </SupabaseProvider>
       </QueryClientProvider>
     </TamaguiProvider>
   )

@@ -1,4 +1,3 @@
-import { AuthProvider } from '@/commons/components/auth-provider/auth-provider'
 import { FontProvider } from '@/commons/components/font-provider/font-provider'
 import { GlobalErrorBoundary } from '@/commons/components/global-error-boundary/global-error-boundary'
 import { SplashScreenSuspense } from '@/commons/components/splash-screen-suspense/splash-screen-suspense'
@@ -7,6 +6,7 @@ import { TamaguiProvider } from '@/commons/components/tamagui-provider/tamagui-p
 import { TanstackQueryProvider } from '@/commons/components/tanstack-query-provider/tanstack-query-provider'
 import { TranslationsProvider } from '@/commons/components/translations-provider/translations-provider'
 import type { ReactNode } from 'react'
+import { AuthPilotProvider } from '../auth-pilot-provider/auth-pilot-provider'
 
 export type RootProviderProps = {
   children: ReactNode
@@ -21,11 +21,11 @@ export function RootProvider({ children }: RootProviderProps) {
             <GlobalErrorBoundary>
               <SupabaseProvider>
                 <TranslationsProvider>
-                  <AuthProvider>
+                  <AuthPilotProvider>
                     <SplashScreenSuspense.Ending>
                       {children}
                     </SplashScreenSuspense.Ending>
-                  </AuthProvider>
+                  </AuthPilotProvider>
                 </TranslationsProvider>
               </SupabaseProvider>
             </GlobalErrorBoundary>
