@@ -1,6 +1,40 @@
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
+import type { PartialDeep } from 'type-fest'
+
 export const supabaseUserMock = {
   id: '123',
   email: 'test@test.com',
+}
+
+type AuthStateChangeFn = (
+  event: AuthChangeEvent,
+  session?: PartialDeep<Session>,
+) => void
+
+export const supabaseAuthStateChangeMock = {
+  fn: (() => undefined) as AuthStateChangeFn,
+
+  setFn(fn: AuthStateChangeFn) {
+    supabaseAuthStateChangeMock.fn = fn
+
+    return supabaseAuthStateChangeMock
+  },
+
+  clear() {
+    supabaseAuthStateChangeMock.fn = (() => undefined) as AuthStateChangeFn
+  },
+
+  fire(event: AuthChangeEvent, session?: PartialDeep<Session>) {
+    supabaseAuthStateChangeMock.fn(event, session as Session)
+  },
+}
+
+export const supabaseAuthStateChangeSubscriptionMock = {
+  data: {
+    subscription: {
+      unsubscribe: jest.fn(),
+    },
+  },
 }
 
 export const supabaseAuthMock = {
@@ -8,6 +42,13 @@ export const supabaseAuthMock = {
   signInWithPassword: jest
     .fn()
     .mockResolvedValue({ data: { user: supabaseUserMock } }),
+  onAuthStateChange: jest
+    .fn()
+    .mockImplementation((fn: (...args: unknown[]) => unknown) => {
+      supabaseAuthStateChangeMock.setFn(fn)
+
+      return supabaseAuthStateChangeSubscriptionMock
+    }),
 }
 
 export const supabaseDataMock = {
@@ -33,6 +74,7 @@ export const supabaseQueryBuilderMock = {
   insert: jest.fn().mockReturnThis(),
   select: jest.fn().mockReturnThis(),
   single: jest.fn().mockReturnThis(),
+  eq: jest.fn().mockReturnThis(),
 
   /**
    * biome-ignore lint/suspicious/noThenProperty: any is respecting the promise like interface
