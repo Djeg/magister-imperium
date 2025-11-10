@@ -27,6 +27,7 @@ export function authSubscription({
       } catch (error) {
         console.warn(
           'Login manually, there is no magister for the given user id',
+          error,
         )
       }
 

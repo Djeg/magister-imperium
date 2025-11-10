@@ -33,6 +33,7 @@ export const supabaseQueryBuilderMock = {
   insert: jest.fn().mockReturnThis(),
   select: jest.fn().mockReturnThis(),
   single: jest.fn().mockReturnThis(),
+  eq: jest.fn().mockReturnThis(),
 
   /**
    * biome-ignore lint/suspicious/noThenProperty: any is respecting the promise like interface
