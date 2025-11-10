@@ -21,9 +21,13 @@ export function useAuthSubscription({
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (!session) return
+      if (event === 'SIGNED_OUT') {
+        onLogout()
 
-      if (event === 'SIGNED_IN') {
+        return
+      }
+
+      if (event === 'SIGNED_IN' && session) {
         try {
           const magister = await fetchMagister(session.user.id)
 
@@ -38,14 +42,6 @@ export function useAuthSubscription({
 
         return
       }
-
-      if (event === 'SIGNED_OUT') {
-        onLogout()
-
-        return
-      }
-
-      return null
     })
 
     return () => {

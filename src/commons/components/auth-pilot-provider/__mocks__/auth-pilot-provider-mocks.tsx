@@ -9,9 +9,11 @@ export const authPilotMock = {
     lastFailure: undefined,
   }),
   login: jest.fn().mockImplementation((magister: Magister) => {
+    authPilotMock.$.lastFailure.set(undefined)
     authPilotMock.$.magister.set(magister)
   }),
   logout: jest.fn().mockImplementation(() => {
+    authPilotMock.$.lastFailure.set(undefined)
     authPilotMock.$.magister.set(undefined)
   }),
   fail: jest.fn().mockImplementation((failure: Failure) => {
